@@ -38,10 +38,10 @@ class _NavigationBarBottomState extends State<NavigationBarBottom> {
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 3,
-            blurRadius: 20,
-            offset: const Offset(0, 3),
+            color: CustomColors.red.withOpacity(0.12),
+            spreadRadius: 4,
+            blurRadius: 22,
+            offset: const Offset(0, 0),
           ),
         ],
       ),

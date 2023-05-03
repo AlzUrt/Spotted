@@ -10,11 +10,21 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   bool _isSearching = false;
+  static const int _defaultSelectedImageIndex = -1;
+  int _selectedImageIndex = _defaultSelectedImageIndex;
+
+  List<String> sportImages = [
+    'skateboard.png',
+    'bmx.png',
+    'street_workout.png',
+    'parkour.png',
+    'vtt.png',
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue,
+      backgroundColor: Colors.white,
       body: Stack(
         children: [
           Container(
@@ -23,10 +33,10 @@ class _HomeState extends State<Home> {
               color: Colors.white,
               boxShadow: [
                 BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 5,
-                  blurRadius: 7,
-                  offset: Offset(0, 3),
+                  color: CustomColors.red.withOpacity(0.12),
+                  spreadRadius: 4,
+                  blurRadius: 22,
+                  offset: Offset(0, 0),
                 ),
               ],
             ),
@@ -99,64 +109,50 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                 ),
-
-
                 SizedBox(height: 20.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Image.asset('lib/assets/images/logo_sport/skateboard.png'),
-                    Image.asset('lib/assets/images/logo_sport/bmx.png'),
-                    Image.asset('lib/assets/images/logo_sport/street_workout.png'),
-                    Image.asset('lib/assets/images/logo_sport/parkour.png'),
-                    Image.asset('lib/assets/images/logo_sport/vtt.png'),
+                    buildMenuItem(0, 'Skateboard'),
+                    buildMenuItem(1, 'BMX'),
+                    buildMenuItem(2, 'Street Workout'),
+                    buildMenuItem(3, 'Parkour'),
+                    buildMenuItem(4, 'VTT'),
                   ],
                 ),
-
-
-
-
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  //   children: [
-                  //     TopSelectSportItem(
-                  //       icon: Icon(Icons.home),
-                  //       label: 'Accueil',
-                  //       isSelected: true,
-                  //       onTap: () {},
-                  //     ),
-                  //     TopSelectSportItem(
-                  //       icon: Icon(Icons.favorite),
-                  //       label: 'Favoris',
-                  //       isSelected: false,
-                  //       onTap: () {},
-                  //     ),
-                  //     TopSelectSportItem(
-                  //       icon: Icon(Icons.rss_feed),
-                  //       label: 'Feed',
-                  //       isSelected: false,
-                  //       onTap: () {},
-                  //     ),
-                  //     TopSelectSportItem(
-                  //       icon: Icon(Icons.chat),
-                  //       label: 'Chat',
-                  //       isSelected: false,
-                  //       onTap: () {},
-                  //     ),
-                  //     TopSelectSportItem(
-                  //       icon: Icon(Icons.person),
-                  //       label: 'Profil',
-                  //       isSelected: false,
-                  //       onTap: () {},
-                  //     ),
-                  //   ],
-                  // ),
-
-
-
-
-
               ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget buildMenuItem(int index, String text) {
+    String imageFileName = sportImages[index];
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          _selectedImageIndex = index;
+        });
+      },
+      child: Column(
+        children: [
+          Image.asset('lib/assets/images/logo_sport/$imageFileName'),
+          SizedBox(height: 5.0),
+          Text(
+            text,
+            style: TextStyle(
+              color: _selectedImageIndex == index ? Colors.red : Colors.black,
+            ),
+          ),
+          SizedBox(height: 11.0), // Espace pour la barre rouge
+          Opacity(
+            opacity: _selectedImageIndex == index ? 1.0 : 0.0,
+            child: Container(
+              height: 3.0, // Hauteur de la barre rouge
+              width: 60.0, // Largeur de la barre rouge
+              color: Colors.red,
             ),
           ),
         ],
