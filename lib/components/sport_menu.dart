@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../assets/colors.dart';
 
 class SportMenu extends StatefulWidget {
   final int selectedIndex;
@@ -20,19 +21,41 @@ class _SportMenuState extends State<SportMenu> {
   ];
 
   @override
- Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          buildMenuItem(0, 'Skateboard'),
-          buildMenuItem(1, 'BMX'),
-          buildMenuItem(2, 'Street Workout'),
-          buildMenuItem(3, 'Parkour'),
-          buildMenuItem(4, 'VTT'),
-        ],
-      ),
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Container(
+          color: Colors.white,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              buildMenuItem(0, 'Skateboard'),
+              buildMenuItem(1, 'BMX'),
+              buildMenuItem(2, 'Street Workout'),
+              buildMenuItem(3, 'Parkour'),
+              buildMenuItem(4, 'VTT'),
+            ],
+          ),
+        ),
+        Positioned(
+          left: 0,
+          right: 0,
+          bottom: 0,
+          child: Container(
+            height: 5, // Hauteur de l'ombre
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  CustomColors.red.withOpacity(0.12),
+                  Colors.transparent,
+                ],
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 
@@ -52,7 +75,7 @@ class _SportMenuState extends State<SportMenu> {
               color: widget.selectedIndex == index ? Colors.red : Colors.black,
             ),
           ),
-          SizedBox(height: 11.0), // Espace pour la barre rouge
+          SizedBox(height: 12.0), // Espace pour la barre rouge
           Opacity(
             opacity: widget.selectedIndex == index ? 1.0 : 0.0,
             child: Container(

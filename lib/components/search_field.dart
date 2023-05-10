@@ -32,19 +32,7 @@ class _SearchFieldState extends State<SearchField> {
         Container(
           height: 80,
           color: Colors.white,
-          // margin: EdgeInsets.only(top: 50),
-            // height: 152,
-            // decoration: BoxDecoration(
-            //   color: Colors.white,
-            //   boxShadow: [
-            //     BoxShadow(
-            //       color: CustomColors.red.withOpacity(0.12),
-            //       spreadRadius: 4,
-            //       blurRadius: 22,
-            //       offset: Offset(0, 0),
-            //     ),
-            //   ],
-            // ),
+          
           child: Column(
             children: [
               Container(
