@@ -29,15 +29,17 @@ class _SearchFieldState extends State<SearchField> {
       },
       child: Column(
         children: [
-          Image.asset('lib/assets/images/logo_sport/$imageFileName'),
+          Image.asset('lib/assets/images/logo_sport/$imageFileName',
+              height: 32.0, width: 32.0),
           SizedBox(height: 5.0),
           Text(
             text,
             style: TextStyle(
               color: _selectedImageIndex == index ? Colors.red : Colors.black,
+              fontSize: 13.0,
             ),
           ),
-          SizedBox(height: 12.0),
+          SizedBox(height: 9.0),
           Opacity(
             opacity: _selectedImageIndex == index ? 1.0 : 0.0,
             child: Container(
@@ -51,16 +53,21 @@ class _SearchFieldState extends State<SearchField> {
     );
   }
 
-  @override
+
+@override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: Column(
-        children: [
-          SizedBox(height: 50.0),
+    return Expanded(
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(4.0),
+        ),
+        child: Column(
+          children: [
+          SizedBox(height: 35.0),
           Container(
             height: 65.0,
-            margin: EdgeInsets.symmetric(horizontal: 35.0),
+            margin: EdgeInsets.symmetric(horizontal: 10.0),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(4.0),
@@ -107,43 +114,45 @@ class _SearchFieldState extends State<SearchField> {
                                 style: CustomTextStyle.subtitle(),
                               ),
                             ],
-                          ),
+                                       ),
                   ),
-                  GestureDetector(
-                    child: Padding(
-                      padding: EdgeInsets.only(right: 10.0),
-                      child: Image.asset(
-                        'lib/assets/images/icons/filter_icon.png',
-                        width: 40.0,
-                        height: 40.0,
-                      ),
-                    ),
+              GestureDetector(
+                child: Padding(
+                  padding: EdgeInsets.only(right: 10.0),
+                  child: Image.asset(
+                    'lib/assets/images/icons/filter_icon.png',
+                    width: 40.0,
+                    height: 40.0,
                   ),
-                ],
-              ),
-            ),
-          ),
-          SizedBox(height: 20.0),
-          
-          Column(
-            children: [
-              Container(
-                color: Colors.white,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    buildMenuItem(0, 'Skateboard'),
-                    buildMenuItem(1, 'BMX'),
-                    buildMenuItem(2, 'Street Workout'),
-                    buildMenuItem(3, 'Parkour'),
-                    buildMenuItem(4, 'VTT'),
-                  ],
                 ),
               ),
-              Positioned(
+            ],
+          ),
+        ),
+      ),
+      SizedBox(height: 20.0),
+      
+      Column(
+        children: [
+          Container(
+            color: Colors.white,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                buildMenuItem(0, 'Skateboard'),
+                buildMenuItem(1, 'BMX'),
+                buildMenuItem(2, 'Street Workout'),
+                buildMenuItem(3, 'Parkour'),
+                buildMenuItem(4, 'VTT'),
+              ],
+            ),
+          ),
+          ],
+        ),
+         Positioned(
                 left: 0,
                 right: 0,
-                bottom: 0,
+                top: -10,
                 child: Container(
                   height: 5,
                   decoration: BoxDecoration(
@@ -158,10 +167,9 @@ class _SearchFieldState extends State<SearchField> {
                   ),
                 ),
               ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
+      ],
+    ),
+  ),
+);
+}
 }
