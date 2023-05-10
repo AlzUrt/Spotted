@@ -8,10 +8,10 @@ environment:
   sdk: '>=2.19.4 <3.0.0'
 
 dependencies:
+  # flutter_swiper: ^2.0.0
   flutter:
     sdk: flutter
-  carousel_slider: ^4.0.0
-
+  carousel_slider: ^4.0.0 
   cupertino_icons: ^1.0.2
 
 dev_dependencies:
@@ -28,6 +28,7 @@ flutter:
     - lib/assets/images/
     - lib/assets/images/icons/
     - lib/assets/images/logo_sport/
+    - lib/assets/images/image/
 
 
 

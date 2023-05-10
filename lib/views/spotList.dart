@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:padsou/assets/colors.dart';
 import 'package:padsou/views/map.dart';
@@ -11,6 +10,7 @@ class SpotList extends StatefulWidget {
 }
 
 class _SpotListState extends State<SpotList> {
+  // double _sliderValue = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,17 +20,197 @@ class _SpotListState extends State<SpotList> {
           Container(
             child: SearchField(),
           ),
-          Positioned(
-            left: 16,
-            top: 256,
-            child: Text(
-              "À proximité",
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: CustomColors.black,
+          ListView(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 32, top: 180),
+                child: Text(
+                  "À proximité",
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: CustomColors.black,
+                  ),
+                ),
               ),
-            ),
+              SizedBox(height: 16),
+              SizedBox(
+                height: 340,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    SizedBox(
+                      width: 32,
+                    ),
+                    SizedBox(
+                      width: 220,
+                      height: 340,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            width: 200,
+                            height: 200,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage(
+                                    'lib/assets/images/image/SkatePark_Bonlieu.png'),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 10),
+                          Text(
+                            'SkatePark de Bonlieu',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: CustomColors.black,
+                            ),
+                          ),
+                          SizedBox(height: 5),
+                          Text(
+                            'À 5km de vous !',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: CustomColors.grey,
+                            ),
+                          ),
+                          SizedBox(height: 5),
+                          Text(
+                            'Le ball est vraiment génial ! Super agréable pour ...',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: CustomColors.black,
+                            ),
+                          ),
+                          SizedBox(height: 5),
+                          Text(
+                            '4.3 ★',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: CustomColors.black,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      width: 220,
+                      height: 340,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            width: 200,
+                            height: 200,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage(
+                                    'lib/assets/images/image/SkatePark_Bonlieu.png'),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 10),
+                          Text(
+                            'SkatePark de Annecy',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: CustomColors.black,
+                            ),
+                          ),
+                          SizedBox(height: 5),
+                          Text(
+                            'À 10km de vous !',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: CustomColors.grey,
+                            ),
+                          ),
+                          SizedBox(height: 5),
+                          Text(
+                            'Le ball est vraiment génial ! Super agréable pour ...',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: CustomColors.black,
+                            ),
+                          ),
+                          SizedBox(height: 5),
+                          Text(
+                            '4.3 ★',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: CustomColors.black,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      width: 220,
+                      height: 340,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            width: 200,
+                            height: 200,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage(
+                                    'lib/assets/images/image/SkatePark_Bonlieu.png'),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 10),
+                          Text(
+                            'Autre élément',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: CustomColors.black,
+                            ),
+                          ),
+                          SizedBox(height: 5),
+                          Text(
+                            'À 10km de vous !',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: CustomColors.grey,
+                            ),
+                          ),
+                          SizedBox(height: 5),
+                          Text(
+                            'Le ball est vraiment génial ! Super agréable pour ...',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: CustomColors.black,
+                            ),
+                          ),
+                          SizedBox(height: 5),
+                          Text(
+                            '4.3 ★',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: CustomColors.black,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      width: 32,
+                    )
+                  ],
+                ),
+              ),
+            ],
           ),
           Positioned(
             left: 0,
