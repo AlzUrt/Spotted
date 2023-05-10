@@ -252,6 +252,8 @@ class _SpotListState extends State<SpotList> {
             ],
           ),
         ),
+
+        
         Positioned(
           left: 0,
           right: 0,
