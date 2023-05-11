@@ -244,6 +244,146 @@ class _SpotListState extends State<SpotList> {
                             ],
                           ),
                         ),
+
+
+SizedBox(height: 10),
+Row(
+  children: [
+    Image.asset(
+      'lib/assets/images/icons/Coeur_noir.png',
+      width: 24,
+      height: 24,
+    ),
+    SizedBox(width: 5),
+    Text(
+      "Spots coups de coeur",
+      style: TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.bold,
+        color: CustomColors.black,
+      ),
+    ),
+  ],
+),
+SizedBox(height: 10),
+Image.asset(
+  'lib/assets/images/image/skatepark_long.png',
+  width: 350,
+  height: 105,
+),
+SizedBox(height: 10),
+Column(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          "SkatePark de Bonlieu",
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: CustomColors.black,
+          ),
+        ),
+        Text(
+          "4.3 ★",
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: CustomColors.black,
+          ),
+        ),
+      ],
+    ),
+    Text(
+      "À 5km de vous !",
+      style: TextStyle(
+        fontSize: 16,
+        color: CustomColors.grey,
+      ),
+    ),
+    Text(
+      "Le ball est vraiment génial ! Super agréable pour ...",
+      style: TextStyle(
+        fontSize: 14,
+        color: CustomColors.black,
+      ),
+    ),
+  ],
+),
+
+                      
+SizedBox(height: 30),
+Row(
+  children: [
+    Image.asset(
+      'lib/assets/images/icons/Coeur_noir.png',
+      width: 24,
+      height: 24,
+    ),
+    SizedBox(width: 5),
+    Text(
+      "Spots coups de coeur",
+      style: TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.bold,
+        color: CustomColors.black,
+      ),
+    ),
+  ],
+),
+SizedBox(height: 10),
+Image.asset(
+  'lib/assets/images/image/skatepark_long.png',
+  width: 350,
+  height: 105,
+),
+SizedBox(height: 10),
+Column(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          "SkatePark de Bonlieu",
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: CustomColors.black,
+          ),
+        ),
+        Text(
+          "4.3 ★",
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: CustomColors.black,
+          ),
+        ),
+      ],
+    ),
+    Text(
+      "À 5km de vous !",
+      style: TextStyle(
+        fontSize: 16,
+        color: CustomColors.grey,
+      ),
+    ),
+    Text(
+      "Le ball est vraiment génial ! Super agréable pour ...",
+      style: TextStyle(
+        fontSize: 14,
+        color: CustomColors.black,
+      ),
+    ),
+  ],
+),
+
+
+
+                        
                         SizedBox(height: 10),
                         ListView.builder(
                           shrinkWrap: true,
