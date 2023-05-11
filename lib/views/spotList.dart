@@ -246,7 +246,7 @@ class _SpotListState extends State<SpotList> {
                         ),
 
 
-SizedBox(height: 10),
+SizedBox(height: 20),
 Row(
   children: [
     Image.asset(
@@ -314,26 +314,7 @@ Column(
 ),
 
                       
-SizedBox(height: 30),
-Row(
-  children: [
-    Image.asset(
-      'lib/assets/images/icons/Coeur_noir.png',
-      width: 24,
-      height: 24,
-    ),
-    SizedBox(width: 5),
-    Text(
-      "Spots coups de coeur",
-      style: TextStyle(
-        fontSize: 24,
-        fontWeight: FontWeight.bold,
-        color: CustomColors.black,
-      ),
-    ),
-  ],
-),
-SizedBox(height: 10),
+SizedBox(height: 20),
 Image.asset(
   'lib/assets/images/image/skatepark_long.png',
   width: 350,
@@ -383,16 +364,172 @@ Column(
 
 
 
-                        
-                        SizedBox(height: 10),
-                        ListView.builder(
-                          shrinkWrap: true,
-                          physics: NeverScrollableScrollPhysics(),
-                          itemCount: images.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Image.network(images[index]);
-                          },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SizedBox(height: 30),
+    Text(
+      "Par ville",
+      style: TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.bold,
+        color: CustomColors.black,
+      ),
+    ),
+    SizedBox(height:10),
+
+                        SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(
+                                width: 220,
+                                height: 340,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      width: 200,
+                                      height: 200,
+                                      decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                          image: AssetImage(
+                                              'lib/assets/images/image/lyon.png'),
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(height: 10),
+                                    Text(
+                                      'Lyon',
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        color: CustomColors.black,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(width:10), // Espacement entre les deux éléments
+                              SizedBox(
+                                width: 220,
+                                height: 340,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    SizedBox(
+                                      width: 220,
+                                      height: 340,
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            width: 200,
+                                            height: 200,
+                                            decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                image: AssetImage(
+                                                    'lib/assets/images/image/paris.png'),
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(height: 10),
+                                          Text(
+                                            'Paris',
+                                            style: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
+                                              color: CustomColors.black,
+                                            ),
+                                          ),
+                                          
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(width:10), // Espacement entre les deux éléments
+                              SizedBox(
+                                width: 220,
+                                height: 340,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    SizedBox(
+                                      width: 220,
+                                      height: 340,
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            width: 200,
+                                            height: 200,
+                                            decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                image: AssetImage(
+                                                    'lib/assets/images/image/SkatePark_Bonlieu.png'),
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(height: 10),
+                                          Text(
+                                            'Marseille',
+                                            style: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
+                                              color: CustomColors.black,
+                                            ),
+                                          ),
+                                          
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
+
+
+
+
+
+
+
+
+
+
+
+
+                        
+                        // SizedBox(height: 10),
+                        // ListView.builder(
+                        //   shrinkWrap: true,
+                        //   physics: NeverScrollableScrollPhysics(),
+                        //   itemCount: images.length,
+                        //   itemBuilder: (BuildContext context, int index) {
+                        //     return Image.network(images[index]);
+                        //   },
+                        // ),
                       ],
                     ),
                   ],
