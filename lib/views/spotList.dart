@@ -659,6 +659,13 @@ class _SpotListState extends State<SpotList> {
                           builder: (context) =>
                               Image.asset('lib/assets/images/icons/Marker.png'),
                         ),
+                                                Marker(
+                          point: LatLng(45.9091, 6.1395),
+                          width: 25,
+                          height: 35,
+                          builder: (context) =>
+                              Image.asset('lib/assets/images/icons/Marker.png'),
+                        ),
                       ],
                     ),
                   ],
