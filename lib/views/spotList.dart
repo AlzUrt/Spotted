@@ -27,35 +27,50 @@ class SpotList extends StatefulWidget {
   _SpotListState createState() => _SpotListState();
 }
 
-
-
 class _SpotListState extends State<SpotList> {
+  LatLng currentLocation =
+      LatLng(45.8991, 6.1295); // Default or initial coordinates
 
-LatLng currentLocation = LatLng(45.8991, 6.1295); // Default or initial coordinates
+  void getLocation() async {
+    await Geolocator.checkPermission();
+    await Geolocator.requestPermission();
 
-void getLocation() async {
-  await Geolocator.checkPermission();
-  await Geolocator.requestPermission();
-  
-  Position position = await Geolocator.getCurrentPosition(
-    desiredAccuracy: LocationAccuracy.high
-  );
+    Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
 
-  double latitude = position.latitude;
-  double longitude = position.longitude;
+    double latitude = position.latitude;
+    double longitude = position.longitude;
 
-
-  currentLocation = LatLng(latitude, longitude); // Mettez à jour currentLocation
-  print(currentLocation);
-}
+    // currentLocation = LatLng(latitude, longitude); // Mettez à jour currentLocation
+    LatLng currentLocation = LatLng(45.8991, 6.1295);
+    print(currentLocation);
+  }
 
   PageController _pageController = PageController(initialPage: 0);
 
+  String buttonText = 'Carte';
+  String buttonImage = 'lib/assets/images/icons/terre.png';
   void changePage() {
     int nextPage = _pageController.page!.round() == 0 ? 1 : 0;
     _pageController.animateToPage(
       nextPage,
-      duration: Duration(milliseconds: 400),
+      duration: Duration(milliseconds: 1),
+      curve: Curves.easeIn,
+    );
+    // change le text de "carte" a "liste"
+    setState(() {
+      buttonText = buttonText == 'Carte' ? 'Liste' : 'Carte';
+      buttonImage = buttonImage == 'lib/assets/images/icons/terre.png'
+          ? 'lib/assets/images/icons/liste.png'
+          : 'lib/assets/images/icons/terre.png';
+    });
+  }
+
+  changePage2(){
+    int nextPage = _pageController.page!.round() == 0 || _pageController.page!.round() == 1 ? 2 : _pageController.page!.round();
+    _pageController.animateToPage(
+      nextPage,
+      duration: Duration(milliseconds: 1),
       curve: Curves.easeIn,
     );
   }
@@ -63,7 +78,7 @@ void getLocation() async {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-            appBar: AppBar(
+      appBar: AppBar(
         backgroundColor: Colors.white,
         title: SearchField(),
         toolbarHeight: 183.0,
@@ -76,13 +91,13 @@ void getLocation() async {
 
 
 
-
               Container(
                 color: Colors.white,
                 child: CustomScrollView(
                   slivers: [
                     SliverPadding(
-                      padding: const EdgeInsets.only(left: 32, right: 32, top: 32),
+                      padding:
+                          const EdgeInsets.only(left: 32, right: 32, top: 32),
                       sliver: SliverList(
                         delegate: SliverChildListDelegate(
                           [
@@ -90,476 +105,543 @@ void getLocation() async {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Container(
-  color: Colors.white,
-  child: SingleChildScrollView(
-    child: Padding(
-      padding: const EdgeInsets.only(left: 0, right: 0, top: 0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-                            Text(
-                              "À proximité",
-                              style: TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black,
-                              ),
-                            ),
-                            SizedBox(height: 10),
-                            SingleChildScrollView(
-                              scrollDirection: Axis.horizontal,
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                    width: 220,
-                                    height: 340,
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Container(
-                                          width: 200,
-                                          height: 200,
-                                          decoration: BoxDecoration(
-                                            image: DecorationImage(
-                                              image: AssetImage(
-                                                  'lib/assets/images/image/SkatePark_Bonlieu.png'),
-                                              fit: BoxFit.cover,
+                                  color: Colors.white,
+                                  child: SingleChildScrollView(
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 0, right: 0, top: 0),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            "À proximité",
+                                            style: TextStyle(
+                                              fontSize: 24,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black,
                                             ),
                                           ),
-                                        ),
-                                        SizedBox(height: 10),
-                                        Text(
-                                          'SkatePark de Bonlieu',
-                                          style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.black,
-                                          ),
-                                        ),
-                                        SizedBox(height: 5),
-                                        Text(
-                                          'À 5km de vous !',
-                                          style: TextStyle(
-                                            fontSize: 16,
-                                            color: Colors.grey,
-                                          ),
-                                        ),
-                                        SizedBox(height: 5),
-                                        Text(
-                                          'Le ball est vraiment génial ! Super agréable pour ...',
-                                          style: TextStyle(
-                                            fontSize: 16,
-                                            color: Colors.black,
-                                          ),
-                                        ),
-                                        SizedBox(height: 5),
-                                        Text(
-                                          '4.3 ★',
-                                          style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.black,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  SizedBox(
-                                      width:
-                                          10), // Espacement entre les deux éléments
-                                  SizedBox(
-                                    width: 220,
-                                    height: 340,
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        SizedBox(
-                                          width: 220,
-                                          height: 340,
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Container(
-                                                width: 200,
-                                                height: 200,
-                                                decoration: BoxDecoration(
-                                                  image: DecorationImage(
-                                                    image: AssetImage(
-                                                        'lib/assets/images/image/SkatePark_Bonlieu.png'),
-                                                    fit: BoxFit.cover,
+                                          SizedBox(height: 10),
+                                          SingleChildScrollView(
+                                            scrollDirection: Axis.horizontal,
+                                            child: Row(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                SizedBox(
+                                                  width: 220,
+                                                  height: 340,
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Container(
+                                                        width: 200,
+                                                        height: 200,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          image:
+                                                              DecorationImage(
+                                                            image: AssetImage(
+                                                                'lib/assets/images/image/SkatePark_Bonlieu.png'),
+                                                            fit: BoxFit.cover,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      SizedBox(height: 10),
+                                                      Text(
+                                                        'SkatePark de Bonlieu',
+                                                        style: TextStyle(
+                                                          fontSize: 20,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          color: Colors.black,
+                                                        ),
+                                                      ),
+                                                      SizedBox(height: 5),
+                                                      Text(
+                                                        'À 5km de vous !',
+                                                        style: TextStyle(
+                                                          fontSize: 16,
+                                                          color: Colors.grey,
+                                                        ),
+                                                      ),
+                                                      SizedBox(height: 5),
+                                                      Text(
+                                                        'Le ball est vraiment génial ! Super agréable pour ...',
+                                                        style: TextStyle(
+                                                          fontSize: 16,
+                                                          color: Colors.black,
+                                                        ),
+                                                      ),
+                                                      SizedBox(height: 5),
+                                                      Text(
+                                                        '4.3 ★',
+                                                        style: TextStyle(
+                                                          fontSize: 16,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          color: Colors.black,
+                                                        ),
+                                                      ),
+                                                    ],
                                                   ),
                                                 ),
+                                                SizedBox(
+                                                    width:
+                                                        10), // Espacement entre les deux éléments
+                                                SizedBox(
+                                                  width: 220,
+                                                  height: 340,
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      SizedBox(
+                                                        width: 220,
+                                                        height: 340,
+                                                        child: Column(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Container(
+                                                              width: 200,
+                                                              height: 200,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                image:
+                                                                    DecorationImage(
+                                                                  image: AssetImage(
+                                                                      'lib/assets/images/image/SkatePark_Bonlieu.png'),
+                                                                  fit: BoxFit
+                                                                      .cover,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            SizedBox(
+                                                                height: 10),
+                                                            Text(
+                                                              'SkatePark de Bonlieu',
+                                                              style: TextStyle(
+                                                                fontSize: 20,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                color: Colors
+                                                                    .black,
+                                                              ),
+                                                            ),
+                                                            SizedBox(height: 5),
+                                                            Text(
+                                                              'À 5km de vous !',
+                                                              style: TextStyle(
+                                                                fontSize: 16,
+                                                                color:
+                                                                    Colors.grey,
+                                                              ),
+                                                            ),
+                                                            SizedBox(height: 5),
+                                                            Text(
+                                                              'Le ball est vraiment génial ! Super agréable pour ...',
+                                                              style: TextStyle(
+                                                                fontSize: 16,
+                                                                color: Colors
+                                                                    .black,
+                                                              ),
+                                                            ),
+                                                            SizedBox(height: 5),
+                                                            Text(
+                                                              '4.3 ★',
+                                                              style: TextStyle(
+                                                                fontSize: 16,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                color: Colors
+                                                                    .black,
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                    width:
+                                                        10), // Espacement entre les deux éléments
+                                                SizedBox(
+                                                  width: 220,
+                                                  height: 340,
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      SizedBox(
+                                                        width: 220,
+                                                        height: 340,
+                                                        child: Column(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Container(
+                                                              width: 200,
+                                                              height: 200,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                image:
+                                                                    DecorationImage(
+                                                                  image: AssetImage(
+                                                                      'lib/assets/images/image/SkatePark_Bonlieu.png'),
+                                                                  fit: BoxFit
+                                                                      .cover,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            SizedBox(
+                                                                height: 10),
+                                                            Text(
+                                                              'SkatePark de Bonlieu',
+                                                              style: TextStyle(
+                                                                fontSize: 20,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                color: Colors
+                                                                    .black,
+                                                              ),
+                                                            ),
+                                                            SizedBox(height: 5),
+                                                            Text(
+                                                              'À 5km de vous !',
+                                                              style: TextStyle(
+                                                                fontSize: 16,
+                                                                color:
+                                                                    Colors.grey,
+                                                              ),
+                                                            ),
+                                                            SizedBox(height: 5),
+                                                            Text(
+                                                              'Le ball est vraiment génial ! Super agréable pour ...',
+                                                              style: TextStyle(
+                                                                fontSize: 16,
+                                                                color: Colors
+                                                                    .black,
+                                                              ),
+                                                            ),
+                                                            SizedBox(height: 5),
+                                                            Text(
+                                                              '4.3 ★',
+                                                              style: TextStyle(
+                                                                fontSize: 16,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                color: Colors
+                                                                    .black,
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          SizedBox(height: 20),
+                                          Row(
+                                            children: [
+                                              Image.asset(
+                                                'lib/assets/images/icons/Coeur_noir.png',
+                                                width: 24,
+                                                height: 24,
                                               ),
-                                              SizedBox(height: 10),
+                                              SizedBox(width: 5),
                                               Text(
-                                                'SkatePark de Bonlieu',
+                                                "Spots coups de coeur",
                                                 style: TextStyle(
-                                                  fontSize: 20,
+                                                  fontSize: 24,
                                                   fontWeight: FontWeight.bold,
                                                   color: Colors.black,
                                                 ),
                                               ),
-                                              SizedBox(height: 5),
+                                            ],
+                                          ),
+                                          SizedBox(height: 10),
+                                          Image.asset(
+                                            'lib/assets/images/image/skatepark_long.png',
+                                            width: 350,
+                                            height: 105,
+                                          ),
+                                          SizedBox(height: 10),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Text(
+                                                    "SkatePark de Bonlieu",
+                                                    style: TextStyle(
+                                                      fontSize: 20,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: Colors.black,
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    "4.3 ★",
+                                                    style: TextStyle(
+                                                      fontSize: 20,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: Colors.black,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
                                               Text(
-                                                'À 5km de vous !',
+                                                "À 5km de vous !",
                                                 style: TextStyle(
                                                   fontSize: 16,
                                                   color: Colors.grey,
                                                 ),
                                               ),
-                                              SizedBox(height: 5),
                                               Text(
-                                                'Le ball est vraiment génial ! Super agréable pour ...',
+                                                "Le ball est vraiment génial ! Super agréable pour ...",
                                                 style: TextStyle(
-                                                  fontSize: 16,
-                                                  color: Colors.black,
-                                                ),
-                                              ),
-                                              SizedBox(height: 5),
-                                              Text(
-                                                '4.3 ★',
-                                                style: TextStyle(
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 14,
                                                   color: Colors.black,
                                                 ),
                                               ),
                                             ],
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  SizedBox(
-                                      width:
-                                          10), // Espacement entre les deux éléments
-                                  SizedBox(
-                                    width: 220,
-                                    height: 340,
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        SizedBox(
-                                          width: 220,
-                                          height: 340,
-                                          child: Column(
+                                          SizedBox(height: 20),
+                                          Image.asset(
+                                            'lib/assets/images/image/skatepark_long.png',
+                                            width: 350,
+                                            height: 105,
+                                          ),
+                                          SizedBox(height: 10),
+                                          Column(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Container(
-                                                width: 200,
-                                                height: 200,
-                                                decoration: BoxDecoration(
-                                                  image: DecorationImage(
-                                                    image: AssetImage(
-                                                        'lib/assets/images/image/SkatePark_Bonlieu.png'),
-                                                    fit: BoxFit.cover,
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Text(
+                                                    "SkatePark de Bonlieu",
+                                                    style: TextStyle(
+                                                      fontSize: 20,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: Colors.black,
+                                                    ),
                                                   ),
-                                                ),
+                                                  Text(
+                                                    "4.3 ★",
+                                                    style: TextStyle(
+                                                      fontSize: 20,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: Colors.black,
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
-                                              SizedBox(height: 10),
                                               Text(
-                                                'SkatePark de Bonlieu',
-                                                style: TextStyle(
-                                                  fontSize: 20,
-                                                  fontWeight: FontWeight.bold,
-                                                  color: Colors.black,
-                                                ),
-                                              ),
-                                              SizedBox(height: 5),
-                                              Text(
-                                                'À 5km de vous !',
+                                                "À 5km de vous !",
                                                 style: TextStyle(
                                                   fontSize: 16,
                                                   color: Colors.grey,
                                                 ),
                                               ),
-                                              SizedBox(height: 5),
                                               Text(
-                                                'Le ball est vraiment génial ! Super agréable pour ...',
+                                                "Le ball est vraiment génial ! Super agréable pour ...",
                                                 style: TextStyle(
-                                                  fontSize: 16,
-                                                  color: Colors.black,
-                                                ),
-                                              ),
-                                              SizedBox(height: 5),
-                                              Text(
-                                                '4.3 ★',
-                                                style: TextStyle(
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 14,
                                                   color: Colors.black,
                                                 ),
                                               ),
                                             ],
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(height: 20),
-                            Row(
-                              children: [
-                                Image.asset(
-                                  'lib/assets/images/icons/Coeur_noir.png',
-                                  width: 24,
-                                  height: 24,
-                                ),
-                                SizedBox(width: 5),
-                                Text(
-                                  "Spots coups de coeur",
-                                  style: TextStyle(
-                                    fontSize: 24,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 10),
-                            Image.asset(
-                              'lib/assets/images/image/skatepark_long.png',
-                              width: 350,
-                              height: 105,
-                            ),
-                            SizedBox(height: 10),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      "SkatePark de Bonlieu",
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black,
-                                      ),
-                                    ),
-                                    Text(
-                                      "4.3 ★",
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Text(
-                                  "À 5km de vous !",
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    color: Colors.grey,
-                                  ),
-                                ),
-                                Text(
-                                  "Le ball est vraiment génial ! Super agréable pour ...",
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 20),
-                            Image.asset(
-                              'lib/assets/images/image/skatepark_long.png',
-                              width: 350,
-                              height: 105,
-                            ),
-                            SizedBox(height: 10),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      "SkatePark de Bonlieu",
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black,
-                                      ),
-                                    ),
-                                    Text(
-                                      "4.3 ★",
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Text(
-                                  "À 5km de vous !",
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    color: Colors.grey,
-                                  ),
-                                ),
-                                Text(
-                                  "Le ball est vraiment génial ! Super agréable pour ...",
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 30),
-                            Text(
-                              "Par ville",
-                              style: TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black,
-                              ),
-                            ),
-                            SizedBox(height: 10),
-                            SingleChildScrollView(
-                              scrollDirection: Axis.horizontal,
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                    width: 220,
-                                    height: 340,
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Container(
-                                          width: 200,
-                                          height: 200,
-                                          decoration: BoxDecoration(
-                                            image: DecorationImage(
-                                              image: AssetImage(
-                                                  'lib/assets/images/image/lyon.png'),
-                                              fit: BoxFit.cover,
+                                          SizedBox(height: 30),
+                                          Text(
+                                            "Par ville",
+                                            style: TextStyle(
+                                              fontSize: 24,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black,
                                             ),
                                           ),
-                                        ),
-                                        SizedBox(height: 10),
-                                        Text(
-                                          'Lyon',
-                                          style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.black,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  SizedBox(
-                                      width:
-                                          10), // Espacement entre les deux éléments
-                                  SizedBox(
-                                    width: 220,
-                                    height: 340,
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        SizedBox(
-                                          width: 220,
-                                          height: 340,
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Container(
-                                                width: 200,
-                                                height: 200,
-                                                decoration: BoxDecoration(
-                                                  image: DecorationImage(
-                                                    image: AssetImage(
-                                                        'lib/assets/images/image/paris.png'),
-                                                    fit: BoxFit.cover,
+                                          SizedBox(height: 10),
+                                          SingleChildScrollView(
+                                            scrollDirection: Axis.horizontal,
+                                            child: Row(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                SizedBox(
+                                                  width: 220,
+                                                  height: 340,
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Container(
+                                                        width: 200,
+                                                        height: 200,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          image:
+                                                              DecorationImage(
+                                                            image: AssetImage(
+                                                                'lib/assets/images/image/lyon.png'),
+                                                            fit: BoxFit.cover,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      SizedBox(height: 10),
+                                                      Text(
+                                                        'Lyon',
+                                                        style: TextStyle(
+                                                          fontSize: 20,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          color: Colors.black,
+                                                        ),
+                                                      ),
+                                                    ],
                                                   ),
                                                 ),
-                                              ),
-                                              SizedBox(height: 10),
-                                              Text(
-                                                'Paris',
-                                                style: TextStyle(
-                                                  fontSize: 20,
-                                                  fontWeight: FontWeight.bold,
-                                                  color: Colors.black,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  SizedBox(
-                                      width:
-                                          10), // Espacement entre les deux éléments
-                                  SizedBox(
-                                    width: 220,
-                                    height: 340,
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        SizedBox(
-                                          width: 220,
-                                          height: 340,
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Container(
-                                                width: 200,
-                                                height: 200,
-                                                decoration: BoxDecoration(
-                                                  image: DecorationImage(
-                                                    image: AssetImage(
-                                                        'lib/assets/images/image/SkatePark_Bonlieu.png'),
-                                                    fit: BoxFit.cover,
+                                                SizedBox(
+                                                    width:
+                                                        10), // Espacement entre les deux éléments
+                                                SizedBox(
+                                                  width: 220,
+                                                  height: 340,
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      SizedBox(
+                                                        width: 220,
+                                                        height: 340,
+                                                        child: Column(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Container(
+                                                              width: 200,
+                                                              height: 200,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                image:
+                                                                    DecorationImage(
+                                                                  image: AssetImage(
+                                                                      'lib/assets/images/image/paris.png'),
+                                                                  fit: BoxFit
+                                                                      .cover,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            SizedBox(
+                                                                height: 10),
+                                                            Text(
+                                                              'Paris',
+                                                              style: TextStyle(
+                                                                fontSize: 20,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                color: Colors
+                                                                    .black,
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ],
                                                   ),
                                                 ),
-                                              ),
-                                              SizedBox(height: 10),
-                                              Text(
-                                                'Marseille',
-                                                style: TextStyle(
-                                                  fontSize: 20,
-                                                  fontWeight: FontWeight.bold,
-                                                  color: Colors.black,
+                                                SizedBox(
+                                                    width:
+                                                        10), // Espacement entre les deux éléments
+                                                SizedBox(
+                                                  width: 220,
+                                                  height: 340,
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      SizedBox(
+                                                        width: 220,
+                                                        height: 340,
+                                                        child: Column(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Container(
+                                                              width: 200,
+                                                              height: 200,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                image:
+                                                                    DecorationImage(
+                                                                  image: AssetImage(
+                                                                      'lib/assets/images/image/SkatePark_Bonlieu.png'),
+                                                                  fit: BoxFit
+                                                                      .cover,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            SizedBox(
+                                                                height: 10),
+                                                            Text(
+                                                              'Marseille',
+                                                              style: TextStyle(
+                                                                fontSize: 20,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                color: Colors
+                                                                    .black,
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
                                                 ),
-                                              ),
-                                            ],
+                                              ],
+                                            ),
                                           ),
-                                        ),
-                                      ],
+                                          SizedBox(height: 30),
+                                        ],
+                                      ),
                                     ),
                                   ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(height: 30),
-                          ],
-      ),
-    ),
-  ),
-)
+                                )
                               ],
                             ),
                           ],
@@ -571,30 +653,54 @@ void getLocation() async {
               ),
 
 
-Container(
-  child: FlutterMap(
-    options: MapOptions(
-      center: currentLocation, // Utilisez currentLocation ici
-      zoom: 13.0,
+
+
+              Container(
+                child: FlutterMap(
+                  options: MapOptions(
+                    center: currentLocation, // Utilisez currentLocation ici
+                    zoom: 13.0,
+                  ),
+                  children: [
+                    TileLayer(
+                      urlTemplate:
+                          'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                      userAgentPackageName: 'com.example.app',
+                    ),
+                    MarkerLayer(
+  markers: [
+    Marker(
+      point: LatLng(45.8991, 6.1295),
+      width: 25,
+      height: 35,
+      builder: (context) => Image.asset('lib/assets/images/icons/Marker.png'),
     ),
-    children: [
-      TileLayer(
-        urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-        userAgentPackageName: 'com.example.app',
-      ),
-    ],
-    nonRotatedChildren: [
-      RichAttributionWidget(
-        attributions: [
-          TextSourceAttribution(
-            'OpenStreetMap contributors',
-            // onTap: () => launchUrl(Uri.parse('https://openstreetmap.org/copyright')),
-          ),
-        ],
-      ),
-    ],
-  ),
+  ],
 ),
+                  ],
+                  nonRotatedChildren: [
+                    RichAttributionWidget(
+                      attributions: [
+                        TextSourceAttribution(
+                          'OpenStreetMap contributors',
+                          // onTap: () => launchUrl(Uri.parse('https://openstreetmap.org/copyright')),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+
+
+
+
+
+              Container(
+                child: Text(
+                  'Liste des spots',
+                )
+              )
+
 
 
             ],
@@ -603,7 +709,8 @@ Container(
 
 
 
-Positioned(
+
+          Positioned(
             left: 0,
             right: 0,
             top: 520,
@@ -633,7 +740,7 @@ Positioned(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      "Carte",
+                                      buttonText,
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
@@ -641,7 +748,7 @@ Positioned(
                                     ),
                                     SizedBox(width: 8),
                                     Image.asset(
-                                      'lib/assets/images/icons/terre.png',
+                                      buttonImage,
                                       width: 20,
                                       height: 20,
                                       color: Colors.white,
@@ -664,10 +771,12 @@ Positioned(
                             color: Colors.transparent,
                             child: InkWell(
                               onTap: (
-                                // get current location
+                                  // get current location
 
-                              ) {
-                              },
+                                  ) {
+
+                                    changePage2();
+                                  },
                               child: Padding(
                                 padding: const EdgeInsets.all(0),
                                 child: Image.asset(
@@ -696,5 +805,3 @@ Positioned(
     );
   }
 }
-
-

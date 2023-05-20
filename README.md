@@ -1,7 +1,6 @@
-# padsou
-
+# Spotted
 ## Consigne
-https://lesignobles.notion.site/Flutter-b76d90feef6a45a8afc0b6ecdd44fe78
+application réaliser dans le cadre du projet de fin d'année MyDigitalProject 2022-2023 a Annecy
 
 ## lancer l'émulateur
 ``` ctrl + shift + p ``` puis ``` flutter: launch emulator ```
