@@ -3,11 +3,19 @@ import 'package:padsou/ui/typo.dart';
 import '../assets/colors.dart';
 
 class SearchField extends StatefulWidget {
+  final VoidCallback onPressedFilter;
+
+  SearchField({required this.onPressedFilter});
+
   @override
   _SearchFieldState createState() => _SearchFieldState();
 }
 
 class _SearchFieldState extends State<SearchField> {
+
+
+
+
   bool _isSearching = false;
   int _selectedImageIndex = 0;
 
@@ -117,15 +125,16 @@ class _SearchFieldState extends State<SearchField> {
                                        ),
                   ),
               GestureDetector(
-                child: Padding(
-                  padding: EdgeInsets.only(right: 10.0),
-                  child: Image.asset(
-                    'lib/assets/images/icons/filter_icon.png',
-                    width: 40.0,
-                    height: 40.0,
-                  ),
-                ),
-              ),
+    onTap: widget.onPressedFilter,  // Accéder à onPressedFilter via widget
+    child: Padding(
+      padding: EdgeInsets.only(right: 10.0),
+      child: Image.asset(
+        'lib/assets/images/icons/filter_icon.png',
+        width: 40.0,
+        height: 40.0,
+      ),
+    ),
+  ),
             ],
           ),
         ),
