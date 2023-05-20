@@ -16,7 +16,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
   return Scaffold(
     backgroundColor: Colors.white,
-    body: SpotList(),
+    body: Home(),
   );
 }
 

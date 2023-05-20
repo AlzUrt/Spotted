@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:padsou/assets/colors.dart';
 
 class Feed extends StatefulWidget {
+
+  
   @override
   ProfilState createState() => ProfilState();
 }
 
 class ProfilState extends State<Feed> {
+
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(

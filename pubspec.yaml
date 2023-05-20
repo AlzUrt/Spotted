@@ -8,9 +8,11 @@ environment:
   sdk: '>=2.19.4 <3.0.0'
 
 dependencies:
-  # flutter_swiper: ^2.0.0
+  flutter_map: ^4.0.0
+  latlng: ^1.0.0
+  geolocator: ^9.0.2
   flutter:
-    sdk: flutter
+    sdk: flutter  
   carousel_slider: ^4.0.0 
   cupertino_icons: ^1.0.2
 

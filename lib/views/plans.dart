@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:padsou/components/navigationBarBottom.dart';
+import 'package:padsou/views/accueil.dart';
 import 'package:padsou/views/favoris.dart';
 import 'package:padsou/views/feed.dart';
 import 'package:padsou/views/home.dart';
 import 'package:padsou/views/chat.dart';
 import 'package:padsou/views/profil.dart';
-
+import 'package:padsou/views/map.dart';
+import 'package:padsou/views/spotList.dart';
 
 class Plans extends StatefulWidget {
   const Plans({Key? key}) : super(key: key);
@@ -16,14 +18,27 @@ class Plans extends StatefulWidget {
 
 class _PlansState extends State<Plans> {
   int _currentIndex = 0;
+  List<Widget> _pages = []; 
 
-  final List<Widget> _pages = [
-    Home(),
-    Favoris(),
-    Feed(),
-    Chat(),
-    Profil(),
-  ];
+  @override
+  void initState() {
+    super.initState();
+    _pages = [
+      SpotList(),
+      Favoris(),
+      Feed(),
+      Chat(),
+      Profil(),
+      // FirstPage(currentIndexSetter: setCurrentIndex),
+      // SecondPage(currentIndexSetter: setCurrentIndex),
+    ];
+  }
+
+  void setCurrentIndex(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,32 +66,23 @@ class _PlansState extends State<Plans> {
                   topRight: Radius.circular(30),
                 ),
               ),
-
-
-
               child: NavigationBarBottom(
-                
                 initialIndex: _currentIndex,
                 items: [
-
-
                   BottomNavigationBarItem(
-                        icon: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                          child: Ink(
-                            padding: const EdgeInsets.all(8),
-                            child: Image.asset(
-                              'lib/assets/images/icons/home.png',
-                              height: 24,
-                              width: 24,
-                            ),
-                          ),
+                    icon: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Ink(
+                        padding: const EdgeInsets.all(8),
+                        child: Image.asset(
+                          'lib/assets/images/icons/home.png',
+                          height: 24,
+                          width: 24,
                         ),
-                        label: 'Accueil',
                       ),
-
-
-
+                    ),
+                    label: 'Accueil',
+                  ),
                   BottomNavigationBarItem(
                     icon: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -133,6 +139,34 @@ class _PlansState extends State<Plans> {
                     ),
                     label: 'Profil',
                   ),
+                  // BottomNavigationBarItem(
+                  //   icon: Padding(
+                  //     padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  //     child: Ink(
+                  //       padding: const EdgeInsets.all(8),
+                  //       child: Image.asset(
+                  //         'lib/assets/images/icons/FirstPage.png',
+                  //         height: 24,
+                  //         width: 24,
+                  //       ),
+                  //     ),
+                  //   ),
+                  //   label: 'FirstPage',
+                  // ),
+                  //                   BottomNavigationBarItem(
+                  //   icon: Padding(
+                  //     padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  //     child: Ink(
+                  //       padding: const EdgeInsets.all(8),
+                  //       child: Image.asset(
+                  //         'lib/assets/images/icons/SecongPage.png',
+                  //         height: 24,
+                  //         width: 24,
+                  //       ),
+                  //     ),
+                  //   ),
+                  //   label: 'SecongPage',
+                  // ),
                 ],
                 onTap: (index) {
                   setState(() {
@@ -140,10 +174,6 @@ class _PlansState extends State<Plans> {
                   });
                 },
               ),
-
-
-
-
             ),
           ),
         ],
