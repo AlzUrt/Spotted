@@ -481,7 +481,7 @@ class _StartState extends State<Start> {
                                       ),
                                       fixedSize: Size(150, 50),
                                     ),
-                                    child: Text(
+                                    child: const Text(
                                       'Passer',
                                       style: TextStyle(
                                         color: CustomColors.black,
@@ -541,7 +541,7 @@ class _StartState extends State<Start> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Text(
+                            const Text(
                               'Bienvenue !',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
@@ -554,8 +554,8 @@ class _StartState extends State<Start> {
                               height: 45,
                               decoration: BoxDecoration(
                                 color: Colors.white,
-                                boxShadow: [
-                                  BoxShadow(
+                                boxShadow: const [
+                                   BoxShadow(
                                     color: Color.fromRGBO(0, 0, 0, 0.15),
                                     blurRadius: 15.6692,
                                   ),
@@ -574,7 +574,7 @@ class _StartState extends State<Start> {
                                     ),
                                   ),
                                   SizedBox(width: 10),
-                                  Text(
+                                  const Text(
                                     'S’inscrire avec Facebook',
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
@@ -590,8 +590,8 @@ class _StartState extends State<Start> {
                               height: 45,
                               decoration: BoxDecoration(
                                 color: Colors.white,
-                                boxShadow: [
-                                  BoxShadow(
+                                boxShadow: const [
+                                   BoxShadow(
                                     color: Color.fromRGBO(0, 0, 0, 0.15),
                                     blurRadius: 15.6692,
                                   ),
@@ -610,7 +610,7 @@ class _StartState extends State<Start> {
                                     ),
                                   ),
                                   SizedBox(width: 10),
-                                  Text(
+                                  const Text(
                                     'S’inscrire avec Apple',
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
@@ -634,8 +634,8 @@ class _StartState extends State<Start> {
                                 height: 60,
                                 decoration: BoxDecoration(
                                   color: CustomColors.red,
-                                  boxShadow: [
-                                    BoxShadow(
+                                  boxShadow: const [
+                                     BoxShadow(
                                       color: Color.fromRGBO(0, 0, 0, 0.15),
                                       blurRadius: 15.6692,
                                     ),
@@ -644,8 +644,8 @@ class _StartState extends State<Start> {
                                 ),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
+                                  children: const[
+                                     Text(
                                       'S’inscrire avec une adresse mail',
                                       style: TextStyle(
                                         fontWeight: FontWeight.bold,
@@ -661,7 +661,7 @@ class _StartState extends State<Start> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text(
+                                const Text(
                                   'Vous avez déjà un compte ? ',
                                   style: TextStyle(
                                     fontSize: 14,
@@ -676,7 +676,7 @@ class _StartState extends State<Start> {
                                           builder: (context) => Login()),
                                     );
                                   },
-                                  child: Text(
+                                  child: const Text(
                                     'Se connecter',
                                     style: TextStyle(
                                       fontSize: 14,
@@ -699,7 +699,7 @@ class _StartState extends State<Start> {
                                           builder: (context) => Plans()),
                                     );
                                   },
-                                  child: Text(
+                                  child: const Text(
                                     'Continuer sans compte',
                                     style: TextStyle(
                                       fontSize: 14,
