@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:padsou/assets/colors.dart';
+import 'package:spotted/assets/colors.dart';
 
 class Login extends StatefulWidget {
+  const Login({Key? key}) : super(key: key);
   @override
   LoginState createState() => LoginState();
 }
 
 class LoginState extends State<Login> {
-  bool _isChecked  = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +18,7 @@ class LoginState extends State<Login> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(height: 100), // Espace vide pour pousser l'image vers le haut
+                const SizedBox(height: 100), // Espace vide pour pousser l'image vers le haut
                 Center(
                   child: Image.asset(
                     'lib/assets/images/icons/logo.png',
@@ -29,7 +29,7 @@ class LoginState extends State<Login> {
                 
 
 
-SizedBox(height: 80), // Marge supérieure
+const SizedBox(height: 80), // Marge supérieure
                       // Marge supérieure
                       Center(
                         child: Container(
@@ -37,7 +37,7 @@ SizedBox(height: 80), // Marge supérieure
                           height: 55,
                           decoration: BoxDecoration(
                             color: Colors.white,
-                            boxShadow: [
+                            boxShadow: const [
                               BoxShadow(
                                 color: Color.fromRGBO(0, 0, 0, 0.15),
                                 blurRadius: 13.7143,
@@ -47,7 +47,7 @@ SizedBox(height: 80), // Marge supérieure
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
+                            children: const [
                               Expanded(
                                 child: TextField(
                                   decoration: InputDecoration(
@@ -71,7 +71,7 @@ SizedBox(height: 80), // Marge supérieure
 
 
 
-SizedBox(height: 25), // Marge supérieure
+const SizedBox(height: 25), // Marge supérieure
                       // Marge supérieure
                       Center(
                         child: Container(
@@ -79,7 +79,7 @@ SizedBox(height: 25), // Marge supérieure
                           height: 55,
                           decoration: BoxDecoration(
                             color: Colors.white,
-                            boxShadow: [
+                            boxShadow:const  [
                               BoxShadow(
                                 color: Color.fromRGBO(0, 0, 0, 0.15),
                                 blurRadius: 13.7143,
@@ -89,7 +89,7 @@ SizedBox(height: 25), // Marge supérieure
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
+                            children:const [
                               Expanded(
                                 child: TextField(
                                   decoration: InputDecoration(
@@ -109,8 +109,8 @@ SizedBox(height: 25), // Marge supérieure
                         ),
                       ),
 
-SizedBox(height: 20),
-Text(
+const SizedBox(height: 20),
+const Text(
   'Mot de passe oublié ?',
   style: TextStyle(
     color: CustomColors.black,
@@ -120,7 +120,7 @@ Text(
 
 
 
-SizedBox(height: 15),
+const SizedBox(height: 15),
  Center(
   child: Row(
     mainAxisAlignment: MainAxisAlignment.center,
@@ -131,8 +131,8 @@ SizedBox(height: 15),
         height: 24,
         width: 24,
       ),
-      SizedBox(width: 8),
-      Text(
+      const SizedBox(width: 8),
+      const Text(
         'Se souvenir de mon compte',
         style: TextStyle(
           fontSize: 16,
@@ -146,21 +146,21 @@ SizedBox(height: 15),
 
 
               
-SizedBox(height: 30),
+const SizedBox(height: 30),
 ElevatedButton(
                                     onPressed: () {
                                       
                                     },
                                     style: ElevatedButton.styleFrom(
-                                      primary: CustomColors.red,
-                                      elevation: 3,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(4.04161),
-                                      ),
-                                      fixedSize: Size(150, 50),
-                                    ),
-                                    child: Text(
+  backgroundColor: CustomColors.red,
+  elevation: 3,
+  shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(4.04161),
+  ),
+  fixedSize: const Size(150, 50),
+),
+
+                                    child: const Text(
                                       "Se connecter",
                                       style: TextStyle(
                                         color: CustomColors.white,
@@ -170,7 +170,7 @@ ElevatedButton(
                                     ),
                                   ),
 
-                      SizedBox(height: 30), // Marge supérieure
+                      const SizedBox(height: 30), // Marge supérieure
                       Center(
                         child: Container(
                           height: 0.5,
@@ -179,7 +179,7 @@ ElevatedButton(
                         ),
                       ),
 
-                      SizedBox(height: 30), // Marge supérieure
+                      const SizedBox(height: 30), // Marge supérieure
 Container(
                               width: 214,
                               height: 35,
@@ -197,14 +197,14 @@ Container(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsets.only(left: 10),
+                                    padding: const EdgeInsets.only(left: 10),
                                     child: Image.asset(
                                       'lib/assets/images/icons/facebook.png',
                                       width: 18,
                                       height: 18,
                                     ),
                                   ),
-                                  SizedBox(width: 10),
+                                  const SizedBox(width: 10),
                                   const Text(
                                     'S’inscrire avec Facebook',
                                     style: TextStyle(
@@ -217,7 +217,7 @@ Container(
                             ),
 
 
-SizedBox(height: 20), // Marge supérieure
+const SizedBox(height: 20), // Marge supérieure
 Container(
                               width: 214,
                               height: 35,
@@ -235,14 +235,14 @@ Container(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsets.only(left: 10),
+                                    padding: const EdgeInsets.only(left: 10),
                                     child: Image.asset(
                                       'lib/assets/images/icons/apple.png',
                                       width: 18,
                                       height: 18,
                                     ),
                                   ),
-                                  SizedBox(width: 10),
+                                  const SizedBox(width: 10),
                                   const Text(
                                     'S’inscrire avec Apple',
                                     style: TextStyle(

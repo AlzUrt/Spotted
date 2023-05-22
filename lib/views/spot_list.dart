@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:padsou/components/search_field.dart';
-import 'package:flutter/material.dart';
+import 'package:spotted/components/search_field.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:padsou/assets/colors.dart';
+import 'package:spotted/assets/colors.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -18,17 +18,18 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: SpotList(),
+      home: const SpotList(),
     );
   }
 }
 
 class SpotList extends StatefulWidget {
+  const SpotList({Key? key}) : super(key: key);
   @override
-  _SpotListState createState() => _SpotListState();
+  SpotListState createState() => SpotListState();
 }
 
-class _SpotListState extends State<SpotList> {
+class SpotListState extends State<SpotList> {
   List<String> sportImages = [
     'skateboard_gris.png',
     'bmx.png',
@@ -44,10 +45,10 @@ class _SpotListState extends State<SpotList> {
         children: [
           Image.asset('lib/assets/images/logo_sport/$imageFileName',
               height: 27.0, width: 27.0),
-          SizedBox(height: 5.0),
+          const SizedBox(height: 5.0),
           Text(
             text,
-            style: TextStyle(
+            style:const TextStyle(
               color: Colors.grey,
               fontSize: 12.0,
             ),
@@ -58,7 +59,7 @@ class _SpotListState extends State<SpotList> {
   }
 
   double topPosition = 520;
-  double SeeMenu = 183;
+  double seeMenu = 183;
   double sliderValue = 1;
 
   LatLng currentLocation =
@@ -76,22 +77,22 @@ class _SpotListState extends State<SpotList> {
 
     // currentLocation = LatLng(latitude, longitude); // Mettez à jour currentLocation
     LatLng currentLocation = LatLng(45.8991, 6.1295);
-    print(currentLocation);
+    // print(currentLocation);
   }
 
-  PageController _pageController = PageController(initialPage: 0);
+  final PageController _pageController = PageController(initialPage: 0);
 
   String buttonText = 'Carte';
   String buttonImage = 'lib/assets/images/icons/terre.png';
   void changePage() {
     setState(() {
       topPosition = 520;
-      SeeMenu = 183;
+      seeMenu = 183;
     });
     int nextPage = _pageController.page!.round() == 0 ? 1 : 0;
     _pageController.animateToPage(
       nextPage,
-      duration: Duration(milliseconds: 1),
+      duration:const Duration(milliseconds: 1),
       curve: Curves.easeIn,
     );
     // change le text de "carte" a "liste"
@@ -106,7 +107,7 @@ class _SpotListState extends State<SpotList> {
   changePage2() {
     setState(() {
       topPosition = 1600;
-      SeeMenu = 0;
+      seeMenu = 0;
     });
     int nextPage =
         _pageController.page!.round() == 0 || _pageController.page!.round() == 1
@@ -114,7 +115,7 @@ class _SpotListState extends State<SpotList> {
             : _pageController.page!.round();
     _pageController.animateToPage(
       nextPage,
-      duration: Duration(milliseconds: 1),
+      duration: const Duration(milliseconds: 1),
       curve: Curves.easeIn,
     );
   }
@@ -122,7 +123,7 @@ class _SpotListState extends State<SpotList> {
   changePage3() {
     setState(() {
       topPosition = 1600;
-      SeeMenu = 0;
+      seeMenu = 0;
     });
     int nextPage =
         _pageController.page!.round() == 0 || _pageController.page!.round() == 1
@@ -130,7 +131,7 @@ class _SpotListState extends State<SpotList> {
             : _pageController.page!.round();
     _pageController.animateToPage(
       nextPage,
-      duration: Duration(milliseconds: 1),
+      duration: const Duration(milliseconds: 1),
       curve: Curves.easeIn,
     );
   }
@@ -144,7 +145,7 @@ class _SpotListState extends State<SpotList> {
         title: SearchField(
           onPressedFilter: changePage3,
         ),
-        toolbarHeight: SeeMenu,
+        toolbarHeight: seeMenu,
       ),
       body: Stack(
         children: [
@@ -164,7 +165,7 @@ class _SpotListState extends State<SpotList> {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
+                                const Text(
                                   "À proximité",
                                   style: TextStyle(
                                     fontSize: 24,
@@ -172,7 +173,7 @@ class _SpotListState extends State<SpotList> {
                                     color: CustomColors.black,
                                   ),
                                 ),
-                                SizedBox(height: 10),
+                                const SizedBox(height: 10),
                                 SingleChildScrollView(
                                   scrollDirection: Axis.horizontal,
                                   child: Row(
@@ -189,7 +190,7 @@ class _SpotListState extends State<SpotList> {
                                             Container(
                                               width: 200,
                                               height: 200,
-                                              decoration: BoxDecoration(
+                                              decoration: const BoxDecoration(
                                                 image: DecorationImage(
                                                   image: AssetImage(
                                                       'lib/assets/images/image/SkatePark_Bonlieu.png'),
@@ -197,8 +198,8 @@ class _SpotListState extends State<SpotList> {
                                                 ),
                                               ),
                                             ),
-                                            SizedBox(height: 10),
-                                            Text(
+                                            const SizedBox(height: 10),
+                                            const Text(
                                               'SkatePark de Bonlieu',
                                               style: TextStyle(
                                                 fontSize: 20,
@@ -206,24 +207,24 @@ class _SpotListState extends State<SpotList> {
                                                 color: CustomColors.black,
                                               ),
                                             ),
-                                            SizedBox(height: 5),
-                                            Text(
+                                            const SizedBox(height: 5),
+                                            const Text(
                                               'À 5km de vous !',
                                               style: TextStyle(
                                                 fontSize: 16,
                                                 color: CustomColors.grey,
                                               ),
                                             ),
-                                            SizedBox(height: 5),
-                                            Text(
+                                            const SizedBox(height: 5),
+                                            const Text(
                                               'Le ball est vraiment génial ! Super agréable pour ...',
                                               style: TextStyle(
                                                 fontSize: 16,
                                                 color: CustomColors.black,
                                               ),
                                             ),
-                                            SizedBox(height: 5),
-                                            Text(
+                                            const SizedBox(height: 5),
+                                            const Text(
                                               '4.3 ★',
                                               style: TextStyle(
                                                 fontSize: 16,
@@ -234,7 +235,7 @@ class _SpotListState extends State<SpotList> {
                                           ],
                                         ),
                                       ),
-                                      SizedBox(
+                                     const  SizedBox(
                                           width:
                                               10), // Espacement entre les deux éléments
                                       SizedBox(
@@ -254,7 +255,7 @@ class _SpotListState extends State<SpotList> {
                                                   Container(
                                                     width: 200,
                                                     height: 200,
-                                                    decoration: BoxDecoration(
+                                                    decoration: const BoxDecoration(
                                                       image: DecorationImage(
                                                         image: AssetImage(
                                                             'lib/assets/images/image/SkatePark_Bonlieu.png'),
@@ -262,8 +263,8 @@ class _SpotListState extends State<SpotList> {
                                                       ),
                                                     ),
                                                   ),
-                                                  SizedBox(height: 10),
-                                                  Text(
+                                                  const SizedBox(height: 10),
+                                                  const Text(
                                                     'SkatePark de Bonlieu',
                                                     style: TextStyle(
                                                       fontSize: 20,
@@ -272,24 +273,24 @@ class _SpotListState extends State<SpotList> {
                                                       color: CustomColors.black,
                                                     ),
                                                   ),
-                                                  SizedBox(height: 5),
-                                                  Text(
+                                                  const SizedBox(height: 5),
+                                                  const Text(
                                                     'À 5km de vous !',
                                                     style: TextStyle(
                                                       fontSize: 16,
                                                       color: CustomColors.grey,
                                                     ),
                                                   ),
-                                                  SizedBox(height: 5),
-                                                  Text(
+                                                  const SizedBox(height: 5),
+                                                  const Text(
                                                     'Le ball est vraiment génial ! Super agréable pour ...',
                                                     style: TextStyle(
                                                       fontSize: 16,
                                                       color: CustomColors.black,
                                                     ),
                                                   ),
-                                                  SizedBox(height: 5),
-                                                  Text(
+                                                  const SizedBox(height: 5),
+                                                  const Text(
                                                     '4.3 ★',
                                                     style: TextStyle(
                                                       fontSize: 16,
@@ -304,7 +305,7 @@ class _SpotListState extends State<SpotList> {
                                           ],
                                         ),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                           width:
                                               10), // Espacement entre les deux éléments
                                       SizedBox(
@@ -324,7 +325,7 @@ class _SpotListState extends State<SpotList> {
                                                   Container(
                                                     width: 200,
                                                     height: 200,
-                                                    decoration: BoxDecoration(
+                                                    decoration: const BoxDecoration(
                                                       image: DecorationImage(
                                                         image: AssetImage(
                                                             'lib/assets/images/image/SkatePark_Bonlieu.png'),
@@ -332,8 +333,8 @@ class _SpotListState extends State<SpotList> {
                                                       ),
                                                     ),
                                                   ),
-                                                  SizedBox(height: 10),
-                                                  Text(
+                                                  const SizedBox(height: 10),
+                                                  const Text(
                                                     'SkatePark de Bonlieu',
                                                     style: TextStyle(
                                                       fontSize: 20,
@@ -342,24 +343,24 @@ class _SpotListState extends State<SpotList> {
                                                       color: CustomColors.black,
                                                     ),
                                                   ),
-                                                  SizedBox(height: 5),
-                                                  Text(
+                                                  const SizedBox(height: 5),
+                                                  const Text(
                                                     'À 5km de vous !',
                                                     style: TextStyle(
                                                       fontSize: 16,
                                                       color: CustomColors.grey,
                                                     ),
                                                   ),
-                                                  SizedBox(height: 5),
-                                                  Text(
+                                                  const SizedBox(height: 5),
+                                                  const Text(
                                                     'Le ball est vraiment génial ! Super agréable pour ...',
                                                     style: TextStyle(
                                                       fontSize: 16,
                                                       color: CustomColors.black,
                                                     ),
                                                   ),
-                                                  SizedBox(height: 5),
-                                                  Text(
+                                                  const SizedBox(height: 5),
+                                                  const Text(
                                                     '4.3 ★',
                                                     style: TextStyle(
                                                       fontSize: 16,
@@ -377,7 +378,7 @@ class _SpotListState extends State<SpotList> {
                                     ],
                                   ),
                                 ),
-                                SizedBox(height: 20),
+                                const SizedBox(height: 20),
                                 Row(
                                   children: [
                                     Image.asset(
@@ -385,8 +386,8 @@ class _SpotListState extends State<SpotList> {
                                       width: 24,
                                       height: 24,
                                     ),
-                                    SizedBox(width: 5),
-                                    Text(
+                                    const SizedBox(width: 5),
+                                    const Text(
                                       "Spots coups de coeur",
                                       style: TextStyle(
                                         fontSize: 24,
@@ -396,20 +397,20 @@ class _SpotListState extends State<SpotList> {
                                     ),
                                   ],
                                 ),
-                                SizedBox(height: 10),
+                                const SizedBox(height: 10),
                                 Image.asset(
                                   'lib/assets/images/image/skatepark_long.png',
                                   width: 350,
                                   height: 105,
                                 ),
-                                SizedBox(height: 10),
+                                const SizedBox(height: 10),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
-                                      children: [
+                                      children:const  [
                                         Text(
                                           "SkatePark de Bonlieu",
                                           style: TextStyle(
@@ -428,14 +429,14 @@ class _SpotListState extends State<SpotList> {
                                         ),
                                       ],
                                     ),
-                                    Text(
+                                    const Text(
                                       "À 5km de vous !",
                                       style: TextStyle(
                                         fontSize: 16,
                                         color: CustomColors.grey,
                                       ),
                                     ),
-                                    Text(
+                                    const Text(
                                       "Le ball est vraiment génial ! Super agréable pour ...",
                                       style: TextStyle(
                                         fontSize: 14,
@@ -444,20 +445,20 @@ class _SpotListState extends State<SpotList> {
                                     ),
                                   ],
                                 ),
-                                SizedBox(height: 20),
+                                const SizedBox(height: 20),
                                 Image.asset(
                                   'lib/assets/images/image/skatepark_long.png',
                                   width: 350,
                                   height: 105,
                                 ),
-                                SizedBox(height: 10),
+                                const SizedBox(height: 10),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
-                                      children: [
+                                      children: const [
                                         Text(
                                           "SkatePark de Bonlieu",
                                           style: TextStyle(
@@ -476,14 +477,14 @@ class _SpotListState extends State<SpotList> {
                                         ),
                                       ],
                                     ),
-                                    Text(
+                                    const Text(
                                       "À 5km de vous !",
                                       style: TextStyle(
                                         fontSize: 16,
                                         color: CustomColors.grey,
                                       ),
                                     ),
-                                    Text(
+                                    const Text(
                                       "Le ball est vraiment génial ! Super agréable pour ...",
                                       style: TextStyle(
                                         fontSize: 14,
@@ -492,8 +493,8 @@ class _SpotListState extends State<SpotList> {
                                     ),
                                   ],
                                 ),
-                                SizedBox(height: 30),
-                                Text(
+                                const SizedBox(height: 30),
+                                const Text(
                                   "Par ville",
                                   style: TextStyle(
                                     fontSize: 24,
@@ -501,7 +502,7 @@ class _SpotListState extends State<SpotList> {
                                     color: CustomColors.black,
                                   ),
                                 ),
-                                SizedBox(height: 10),
+                                const SizedBox(height: 10),
                                 SingleChildScrollView(
                                   scrollDirection: Axis.horizontal,
                                   child: Row(
@@ -518,7 +519,7 @@ class _SpotListState extends State<SpotList> {
                                             Container(
                                               width: 200,
                                               height: 200,
-                                              decoration: BoxDecoration(
+                                              decoration:const  BoxDecoration(
                                                 image: DecorationImage(
                                                   image: AssetImage(
                                                       'lib/assets/images/image/lyon.png'),
@@ -526,8 +527,8 @@ class _SpotListState extends State<SpotList> {
                                                 ),
                                               ),
                                             ),
-                                            SizedBox(height: 10),
-                                            Text(
+                                            const SizedBox(height: 10),
+                                            const Text(
                                               'Lyon',
                                               style: TextStyle(
                                                 fontSize: 20,
@@ -538,7 +539,7 @@ class _SpotListState extends State<SpotList> {
                                           ],
                                         ),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                           width:
                                               10), // Espacement entre les deux éléments
                                       SizedBox(
@@ -558,7 +559,7 @@ class _SpotListState extends State<SpotList> {
                                                   Container(
                                                     width: 200,
                                                     height: 200,
-                                                    decoration: BoxDecoration(
+                                                    decoration:const  BoxDecoration(
                                                       image: DecorationImage(
                                                         image: AssetImage(
                                                             'lib/assets/images/image/paris.png'),
@@ -566,8 +567,8 @@ class _SpotListState extends State<SpotList> {
                                                       ),
                                                     ),
                                                   ),
-                                                  SizedBox(height: 10),
-                                                  Text(
+                                                  const SizedBox(height: 10),
+                                                  const Text(
                                                     'Paris',
                                                     style: TextStyle(
                                                       fontSize: 20,
@@ -582,7 +583,7 @@ class _SpotListState extends State<SpotList> {
                                           ],
                                         ),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                           width:
                                               10), // Espacement entre les deux éléments
                                       SizedBox(
@@ -602,7 +603,7 @@ class _SpotListState extends State<SpotList> {
                                                   Container(
                                                     width: 200,
                                                     height: 200,
-                                                    decoration: BoxDecoration(
+                                                    decoration:const  BoxDecoration(
                                                       image: DecorationImage(
                                                         image: AssetImage(
                                                             'lib/assets/images/image/SkatePark_Bonlieu.png'),
@@ -610,8 +611,8 @@ class _SpotListState extends State<SpotList> {
                                                       ),
                                                     ),
                                                   ),
-                                                  SizedBox(height: 10),
-                                                  Text(
+                                                  const SizedBox(height: 10),
+                                                  const Text(
                                                     'Marseille',
                                                     style: TextStyle(
                                                       fontSize: 20,
@@ -629,7 +630,7 @@ class _SpotListState extends State<SpotList> {
                                     ],
                                   ),
                                 ),
-                                SizedBox(height: 30),
+                                const SizedBox(height: 30),
                               ],
                             ),
                           ],
@@ -639,13 +640,13 @@ class _SpotListState extends State<SpotList> {
                   ],
                 ),
               ),
-              Container(
+              SizedBox(
                 child: FlutterMap(
                   options: MapOptions(
                     center: currentLocation, // Utilisez currentLocation ici
                     zoom: 13.0,
                   ),
-                  children: [
+                   children: [
                     TileLayer(
                       urlTemplate:
                           'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -670,7 +671,7 @@ class _SpotListState extends State<SpotList> {
                       ],
                     ),
                   ],
-                  nonRotatedChildren: [
+                  nonRotatedChildren: const[
                     RichAttributionWidget(
                       attributions: [
                         TextSourceAttribution(
@@ -698,7 +699,7 @@ class _SpotListState extends State<SpotList> {
                         ),
                       ),
                       // SizedBox(height: 15), // Marge supérieure
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(left: 50.0),
                         child: Text(
                           'Proposer un spot',
@@ -709,33 +710,33 @@ class _SpotListState extends State<SpotList> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 15),
+                      const SizedBox(height: 15),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Container(
-                            margin: EdgeInsets.only(right: 11.0),
+                            margin: const EdgeInsets.only(right: 11.0),
                             child: buildMenuItem(0, 'Skateboard'),
                           ),
                           Container(
-                            margin: EdgeInsets.symmetric(horizontal: 11.0),
+                            margin: const EdgeInsets.symmetric(horizontal: 11.0),
                             child: buildMenuItem(1, 'BMX'),
                           ),
                           Container(
-                            margin: EdgeInsets.symmetric(horizontal: 11.0),
+                            margin: const EdgeInsets.symmetric(horizontal: 11.0),
                             child: buildMenuItem(2, 'Street Workout'),
                           ),
                           Container(
-                            margin: EdgeInsets.symmetric(horizontal: 11.0),
+                            margin: const EdgeInsets.symmetric(horizontal: 11.0),
                             child: buildMenuItem(3, 'Parkour'),
                           ),
                           Container(
-                            margin: EdgeInsets.only(left: 11.0),
+                            margin: const EdgeInsets.only(left: 11.0),
                             child: buildMenuItem(4, 'VTT'),
                           ),
                         ],
                       ),
-                      SizedBox(height: 30), // Marge supérieure
+                      const SizedBox(height: 30), // Marge supérieure
                       // Marge supérieure
                       Center(
                         child: Container(
@@ -743,7 +744,7 @@ class _SpotListState extends State<SpotList> {
                           height: 55,
                           decoration: BoxDecoration(
                             color: Colors.white,
-                            boxShadow: [
+                            boxShadow: const [
                               BoxShadow(
                                 color: Color.fromRGBO(0, 0, 0, 0.15),
                                 blurRadius: 13.7143,
@@ -753,7 +754,7 @@ class _SpotListState extends State<SpotList> {
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
+                            children: const [
                               Expanded(
                                 child: TextField(
                                   decoration: InputDecoration(
@@ -771,7 +772,7 @@ class _SpotListState extends State<SpotList> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 30), // Marge supérieure
+                      const SizedBox(height: 30), // Marge supérieure
                       // Marge supérieure
                       Center(
                         child: Container(
@@ -779,7 +780,7 @@ class _SpotListState extends State<SpotList> {
                           height: 55,
                           decoration: BoxDecoration(
                             color: Colors.white,
-                            boxShadow: [
+                            boxShadow: const [
                               BoxShadow(
                                 color: Color.fromRGBO(0, 0, 0, 0.15),
                                 blurRadius: 13.7143,
@@ -789,7 +790,7 @@ class _SpotListState extends State<SpotList> {
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
+                            children: const [
                               Expanded(
                                 child: TextField(
                                   decoration: InputDecoration(
@@ -807,7 +808,7 @@ class _SpotListState extends State<SpotList> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 30),
+                      const SizedBox(height: 30),
                       Center(
                         child: Container(
                           width: 314,
@@ -816,7 +817,7 @@ class _SpotListState extends State<SpotList> {
                             color: CustomColors.red,
                             borderRadius: BorderRadius.circular(5),
                           ),
-                          child: Center(
+                          child: const Center(
                             child: Text(
                               'Séléctionner des photos',
                               style: TextStyle(
@@ -828,7 +829,7 @@ class _SpotListState extends State<SpotList> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 30), // Marge supérieure
+                      const SizedBox(height: 30), // Marge supérieure
                       // Marge supérieure
                       Center(
                         child: Container(
@@ -836,7 +837,7 @@ class _SpotListState extends State<SpotList> {
                           height: 190,
                           decoration: BoxDecoration(
                             color: Colors.white,
-                            boxShadow: [
+                            boxShadow: const [
                               BoxShadow(
                                 color: Color.fromRGBO(0, 0, 0, 0.15),
                                 blurRadius: 13.7143,
@@ -846,7 +847,7 @@ class _SpotListState extends State<SpotList> {
                           ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
+                            children: const [
                               Expanded(
                                 child: TextField(
                                   decoration: InputDecoration(
@@ -865,12 +866,12 @@ class _SpotListState extends State<SpotList> {
                         ),
                       ),
 
-                      SizedBox(height: 15),
+                      const SizedBox(height: 15),
                       Padding(
-                        padding: EdgeInsets.only(left: 50.0),
+                        padding: const EdgeInsets.only(left: 50.0),
                         child: Row(
                           children: [
-                            Text(
+                            const Text(
                               'Difficulté',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
@@ -878,7 +879,7 @@ class _SpotListState extends State<SpotList> {
                                 color: Colors.black,
                               ),
                             ),
-                            SizedBox(width: 20),
+                            const SizedBox(width: 20),
                             Row(
                               children: [
                                 Image.asset(
@@ -911,7 +912,7 @@ class _SpotListState extends State<SpotList> {
                           ],
                         ),
                       ),
-                      SizedBox(height: 15),
+                      const SizedBox(height: 15),
                       Center(
                         child: Container(
                           width: 150,
@@ -920,7 +921,7 @@ class _SpotListState extends State<SpotList> {
                             color: CustomColors.red,
                             borderRadius: BorderRadius.circular(5),
                           ),
-                          child: Center(
+                          child: const Center(
                             child: Text(
                               'Proposer le spot',
                               style: TextStyle(
@@ -956,28 +957,28 @@ class _SpotListState extends State<SpotList> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Container(
-                            margin: EdgeInsets.only(right: 11.0),
+                            margin: const EdgeInsets.only(right: 11.0),
                             child: buildMenuItem(0, 'Skateboard'),
                           ),
                           Container(
-                            margin: EdgeInsets.symmetric(horizontal: 11.0),
+                            margin: const EdgeInsets.symmetric(horizontal: 11.0),
                             child: buildMenuItem(1, 'BMX'),
                           ),
                           Container(
-                            margin: EdgeInsets.symmetric(horizontal: 11.0),
+                            margin: const EdgeInsets.symmetric(horizontal: 11.0),
                             child: buildMenuItem(2, 'Street Workout'),
                           ),
                           Container(
-                            margin: EdgeInsets.symmetric(horizontal: 11.0),
+                            margin: const EdgeInsets.symmetric(horizontal: 11.0),
                             child: buildMenuItem(3, 'Parkour'),
                           ),
                           Container(
-                            margin: EdgeInsets.only(left: 11.0),
+                            margin: const EdgeInsets.only(left: 11.0),
                             child: buildMenuItem(4, 'VTT'),
                           ),
                         ],
                       ),
-                      SizedBox(height: 30), // Marge supérieure
+                      const SizedBox(height: 30), // Marge supérieure
                       Center(
                         child: Container(
                           height: 0.5,
@@ -985,14 +986,14 @@ class _SpotListState extends State<SpotList> {
                           color: Colors.black,
                         ),
                       ),
-                      SizedBox(height: 30), // Marge supérieure
+                      const SizedBox(height: 30), // Marge supérieure
                       Center(
                         child: Container(
                           width: 314,
                           height: 55,
                           decoration: BoxDecoration(
                             color: Colors.white,
-                            boxShadow: [
+                            boxShadow: const [
                               BoxShadow(
                                 color: Color.fromRGBO(0, 0, 0, 0.15),
                                 blurRadius: 13.7143,
@@ -1003,7 +1004,7 @@ class _SpotListState extends State<SpotList> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Expanded(
+                              const Expanded(
                                 child: TextField(
                                   decoration: InputDecoration(
                                     hintText: 'Localisation du spot',
@@ -1017,7 +1018,7 @@ class _SpotListState extends State<SpotList> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsets.only(right: 20.0),
+                                padding: const EdgeInsets.only(right: 20.0),
                                 child: Image.asset(
                                   'lib/assets/images/icons/loca.png',
                                   height: 24,
@@ -1028,8 +1029,8 @@ class _SpotListState extends State<SpotList> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 30), // Espacement de 50 pixels
-                      Padding(
+                      const SizedBox(height: 30), // Espacement de 50 pixels
+                      const Padding(
                         padding: EdgeInsets.only(left: 50.0),
                         child: Align(
                           alignment: Alignment.centerLeft,
@@ -1043,14 +1044,14 @@ class _SpotListState extends State<SpotList> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       Center(
-                        child: Container(
+                        child: SizedBox(
                           width: 335,
                           child: Column(
                             children: [
                               SliderTheme(
-                                data: SliderThemeData(
+                                data: const SliderThemeData(
                                   trackHeight: 1.0,
                                   thumbShape: RoundSliderThumbShape(
                                       enabledThumbRadius: 8.0),
@@ -1074,7 +1075,7 @@ class _SpotListState extends State<SpotList> {
                               Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
-                                children: [
+                                children:const  [
                                   Text(
                                     '1km',
                                     style: TextStyle(
@@ -1111,7 +1112,7 @@ class _SpotListState extends State<SpotList> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 30), // Marge supérieure
+                      const SizedBox(height: 30), // Marge supérieure
                       Center(
                         child: Container(
                           height: 0.5,
@@ -1119,12 +1120,12 @@ class _SpotListState extends State<SpotList> {
                           color: Colors.black,
                         ),
                       ),
-                      SizedBox(height: 30),
+                      const SizedBox(height: 30),
                       Padding(
-                        padding: EdgeInsets.only(left: 50.0),
+                        padding: const EdgeInsets.only(left: 50.0),
                         child: Row(
                           children: [
-                            Text(
+                            const Text(
                               'Difficulté',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
@@ -1132,7 +1133,7 @@ class _SpotListState extends State<SpotList> {
                                 color: Colors.black,
                               ),
                             ),
-                            SizedBox(width: 20),
+                            const SizedBox(width: 20),
                             Row(
                               children: [
                                 Image.asset(
@@ -1165,12 +1166,12 @@ class _SpotListState extends State<SpotList> {
                           ],
                         ),
                       ),
-                      SizedBox(height: 15),
+                      const SizedBox(height: 15),
                       Padding(
-                        padding: EdgeInsets.only(left: 50.0),
+                        padding: const EdgeInsets.only(left: 50.0),
                         child: Row(
                           children: [
-                            Text(
+                            const Text(
                               'Note',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
@@ -1178,7 +1179,7 @@ class _SpotListState extends State<SpotList> {
                                 color: Colors.black,
                               ),
                             ),
-                            SizedBox(width: 20),
+                            const SizedBox(width: 20),
                             Row(
                               children: [
                                 Image.asset(
@@ -1211,7 +1212,7 @@ class _SpotListState extends State<SpotList> {
                           ],
                         ),
                       ),
-                      SizedBox(height: 30), // Marge supérieure
+                     const SizedBox(height: 30), // Marge supérieure
                       Center(
                         child: Container(
                           height: 0.5,
@@ -1219,12 +1220,12 @@ class _SpotListState extends State<SpotList> {
                           color: Colors.black,
                         ),
                       ),
-                      SizedBox(height: 30),
+                      const SizedBox(height: 30),
                       Padding(
-                        padding: EdgeInsets.only(left: 50.0),
+                        padding: const EdgeInsets.only(left: 50.0),
                         child: Row(
                           children: [
-                            Text(
+                            const Text(
                               'Spots gratuits uniquement',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
@@ -1240,12 +1241,12 @@ class _SpotListState extends State<SpotList> {
                           ],
                         ),
                       ),
-                      SizedBox(height: 30),
+                     const  SizedBox(height: 30),
                       Padding(
-                        padding: EdgeInsets.only(left: 50.0),
+                        padding: const EdgeInsets.only(left: 50.0),
                         child: Row(
                           children: [
-                            Text(
+                            const Text(
                               'Eau à disposition',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
@@ -1261,12 +1262,12 @@ class _SpotListState extends State<SpotList> {
                           ],
                         ),
                       ),
-                      SizedBox(height: 30),
+                     const SizedBox(height: 30),
                       Padding(
-                        padding: EdgeInsets.only(left: 50.0),
+                        padding: const EdgeInsets.only(left: 50.0),
                         child: Row(
                           children: [
-                            Text(
+                            const Text(
                               'Prises électriques à disposition',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
@@ -1282,7 +1283,7 @@ class _SpotListState extends State<SpotList> {
                           ],
                         ),
                       ),
-                      SizedBox(height: 30),
+                      const SizedBox(height: 30),
                       Center(
                         child: Container(
                           width: 150,
@@ -1291,7 +1292,7 @@ class _SpotListState extends State<SpotList> {
                             color: CustomColors.red,
                             borderRadius: BorderRadius.circular(5),
                           ),
-                          child: Center(
+                          child: const Center(
                             child: Text(
                               'Rechercher',
                               style: TextStyle(
@@ -1314,10 +1315,10 @@ class _SpotListState extends State<SpotList> {
             right: 0,
             top: topPosition,
             child: Container(
-              margin: EdgeInsets.symmetric(horizontal: 138),
+              margin: const EdgeInsets.symmetric(horizontal: 138),
               child: Column(
                 children: [
-                  Container(
+                  SizedBox(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -1340,12 +1341,12 @@ class _SpotListState extends State<SpotList> {
                                   children: [
                                     Text(
                                       buttonText,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
-                                    SizedBox(width: 8),
+                                    const SizedBox(width: 8),
                                     Image.asset(
                                       buttonImage,
                                       width: 20,
@@ -1358,7 +1359,7 @@ class _SpotListState extends State<SpotList> {
                             ),
                           ),
                         ),
-                        SizedBox(width: 16),
+                        const SizedBox(width: 16),
                         Container(
                           height: 30.0,
                           width: 30.0,

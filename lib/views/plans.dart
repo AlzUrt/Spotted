@@ -1,22 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:padsou/components/navigationBarBottom.dart';
-import 'package:padsou/views/accueil.dart';
-import 'package:padsou/views/favoris.dart';
-import 'package:padsou/views/feed.dart';
-import 'package:padsou/views/home.dart';
-import 'package:padsou/views/chat.dart';
-import 'package:padsou/views/profil.dart';
-import 'package:padsou/views/map.dart';
-import 'package:padsou/views/spotList.dart';
+import 'package:spotted/components/navigation_bar_bottom.dart';
+import 'package:spotted/views/favoris.dart';
+import 'package:spotted/views/feed.dart';
+import 'package:spotted/views/chat.dart';
+import 'package:spotted/views/profil.dart';
+import 'package:spotted/views/spot_list.dart';
 
 class Plans extends StatefulWidget {
   const Plans({Key? key}) : super(key: key);
 
   @override
-  _PlansState createState() => _PlansState();
+  PlansState createState() => PlansState();
 }
 
-class _PlansState extends State<Plans> {
+class PlansState extends State<Plans> {
   int _currentIndex = 0;
   List<Widget> _pages = []; 
 
@@ -24,13 +21,11 @@ class _PlansState extends State<Plans> {
   void initState() {
     super.initState();
     _pages = [
-      SpotList(),
-      Favoris(),
-      Feed(),
-      Chat(),
-      Profil(),
-      // FirstPage(currentIndexSetter: setCurrentIndex),
-      // SecondPage(currentIndexSetter: setCurrentIndex),
+      const SpotList(),
+      const Favoris(),
+      const Feed(),
+      const Chat(),
+      const Profil(),
     ];
   }
 

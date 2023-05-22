@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:padsou/assets/colors.dart';
+import 'package:spotted/assets/colors.dart';
 
 class CustomTextStyle {
     static TextStyle title({Color color = CustomColors.black}) {

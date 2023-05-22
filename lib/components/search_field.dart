@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:padsou/ui/typo.dart';
+import 'package:spotted/ui/typo.dart';
 import '../assets/colors.dart';
 
 class SearchField extends StatefulWidget {
   final VoidCallback onPressedFilter;
 
-  SearchField({required this.onPressedFilter});
+  const SearchField({required this.onPressedFilter, Key? key}) : super(key: key);
 
   @override
-  _SearchFieldState createState() => _SearchFieldState();
+  SearchFieldState createState() => SearchFieldState();
 }
 
-class _SearchFieldState extends State<SearchField> {
+class SearchFieldState extends State<SearchField> {
 
 
 
@@ -39,7 +39,7 @@ class _SearchFieldState extends State<SearchField> {
         children: [
           Image.asset('lib/assets/images/logo_sport/$imageFileName',
               height: 32.0, width: 32.0),
-          SizedBox(height: 5.0),
+          const SizedBox(height: 5.0),
           Text(
             text,
             style: TextStyle(
@@ -47,7 +47,7 @@ class _SearchFieldState extends State<SearchField> {
               fontSize: 13.0,
             ),
           ),
-          SizedBox(height: 9.0),
+          const SizedBox(height: 9.0),
           Opacity(
             opacity: _selectedImageIndex == index ? 1.0 : 0.0,
             child: Container(
@@ -72,10 +72,10 @@ class _SearchFieldState extends State<SearchField> {
         ),
         child: Column(
           children: [
-          SizedBox(height: 35.0),
+          const SizedBox(height: 35.0),
           Container(
             height: 65.0,
-            margin: EdgeInsets.symmetric(horizontal: 10.0),
+            margin: const EdgeInsets.symmetric(horizontal: 10.0),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(4.0),
@@ -84,7 +84,7 @@ class _SearchFieldState extends State<SearchField> {
                   color: Colors.grey.withOpacity(0.5),
                   spreadRadius: 2,
                   blurRadius: 7,
-                  offset: Offset(0, 3),
+                  offset: const Offset(0, 3),
                 ),
               ],
             ),
@@ -96,9 +96,9 @@ class _SearchFieldState extends State<SearchField> {
               },
               child: Row(
                 children: [
-                  SizedBox(width: 10.0),
-                  Icon(Icons.search, color: CustomColors.black),
-                  SizedBox(width: 10.0),
+                  const SizedBox(width: 10.0),
+                  const Icon(Icons.search, color: CustomColors.black),
+                  const SizedBox(width: 10.0),
                   Expanded(
                     child: _isSearching
                         ? TextFormField(
@@ -116,7 +116,7 @@ class _SearchFieldState extends State<SearchField> {
                                 'Spot',
                                 style: CustomTextStyle.title(),
                               ),
-                              SizedBox(height: 5.0),
+                              const SizedBox(height: 5.0),
                               Text(
                                 'Une adresse ∙ une ville ∙ un sport ∙ ...',
                                 style: CustomTextStyle.subtitle(),
@@ -127,7 +127,7 @@ class _SearchFieldState extends State<SearchField> {
               GestureDetector(
     onTap: widget.onPressedFilter,  // Accéder à onPressedFilter via widget
     child: Padding(
-      padding: EdgeInsets.only(right: 10.0),
+      padding: const EdgeInsets.only(right: 10.0),
       child: Image.asset(
         'lib/assets/images/icons/filter_icon.png',
         width: 40.0,
@@ -139,7 +139,7 @@ class _SearchFieldState extends State<SearchField> {
           ),
         ),
       ),
-      SizedBox(height: 20.0),
+      const SizedBox(height: 20.0),
       
       Column(
         children: [

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:padsou/assets/colors.dart';
-import 'package:padsou/views/login.dart';
+import 'package:spotted/assets/colors.dart';
+import 'package:spotted/views/login.dart';
 
 class Register extends StatefulWidget {
+  const Register({Key? key}) : super(key: key);
   @override
   RegisterState createState() => RegisterState();
 }
@@ -18,7 +19,7 @@ class RegisterState extends State<Register> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(height: 100), // Espace vide pour pousser l'image vers le haut
+                const SizedBox(height: 100), // Espace vide pour pousser l'image vers le haut
                 Center(
                   child: Image.asset(
                     'lib/assets/images/icons/logo.png',
@@ -29,7 +30,7 @@ class RegisterState extends State<Register> {
                 
 
 
-SizedBox(height: 80), // Marge supérieure
+const SizedBox(height: 80), // Marge supérieure
                       // Marge supérieure
                       Center(
                         child: Container(
@@ -37,7 +38,7 @@ SizedBox(height: 80), // Marge supérieure
                           height: 55,
                           decoration: BoxDecoration(
                             color: Colors.white,
-                            boxShadow: [
+                            boxShadow: const [
                               BoxShadow(
                                 color: Color.fromRGBO(0, 0, 0, 0.15),
                                 blurRadius: 13.7143,
@@ -47,7 +48,7 @@ SizedBox(height: 80), // Marge supérieure
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
+                            children: const [
                               Expanded(
                                 child: TextField(
                                   decoration: InputDecoration(
@@ -69,7 +70,7 @@ SizedBox(height: 80), // Marge supérieure
 
 
 
-SizedBox(height: 25), // Marge supérieure
+const SizedBox(height: 25), // Marge supérieure
                       // Marge supérieure
                       Center(
                         child: Container(
@@ -77,7 +78,7 @@ SizedBox(height: 25), // Marge supérieure
                           height: 55,
                           decoration: BoxDecoration(
                             color: Colors.white,
-                            boxShadow: [
+                            boxShadow: const [
                               BoxShadow(
                                 color: Color.fromRGBO(0, 0, 0, 0.15),
                                 blurRadius: 13.7143,
@@ -87,7 +88,7 @@ SizedBox(height: 25), // Marge supérieure
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
+                            children: const[
                               Expanded(
                                 child: TextField(
                                   decoration: InputDecoration(
@@ -108,7 +109,7 @@ SizedBox(height: 25), // Marge supérieure
                       ),
 
 
-SizedBox(height: 25), // Marge supérieure
+const SizedBox(height: 25), // Marge supérieure
                       // Marge supérieure
                       Center(
                         child: Container(
@@ -116,7 +117,7 @@ SizedBox(height: 25), // Marge supérieure
                           height: 55,
                           decoration: BoxDecoration(
                             color: Colors.white,
-                            boxShadow: [
+                            boxShadow: const [
                               BoxShadow(
                                 color: Color.fromRGBO(0, 0, 0, 0.15),
                                 blurRadius: 13.7143,
@@ -126,7 +127,7 @@ SizedBox(height: 25), // Marge supérieure
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
+                            children:const [
                               Expanded(
                                 child: TextField(
                                   decoration: InputDecoration(
@@ -147,7 +148,7 @@ SizedBox(height: 25), // Marge supérieure
                       ),
 
 
-SizedBox(height: 25), // Marge supérieure
+const SizedBox(height: 25), // Marge supérieure
                       // Marge supérieure
                       Center(
                         child: Container(
@@ -155,7 +156,7 @@ SizedBox(height: 25), // Marge supérieure
                           height: 55,
                           decoration: BoxDecoration(
                             color: Colors.white,
-                            boxShadow: [
+                            boxShadow: const [
                               BoxShadow(
                                 color: Color.fromRGBO(0, 0, 0, 0.15),
                                 blurRadius: 13.7143,
@@ -165,7 +166,7 @@ SizedBox(height: 25), // Marge supérieure
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
+                            children: const[
                               Expanded(
                                 child: TextField(
                                   decoration: InputDecoration(
@@ -186,21 +187,21 @@ SizedBox(height: 25), // Marge supérieure
                       ),
 
               
-SizedBox(height: 30),
+const SizedBox(height: 30),
 ElevatedButton(
                                     onPressed: () {
                                       
                                     },
                                     style: ElevatedButton.styleFrom(
-                                      primary: CustomColors.red,
+                                      backgroundColor: CustomColors.red,
                                       elevation: 3,
                                       shape: RoundedRectangleBorder(
                                         borderRadius:
                                             BorderRadius.circular(4.04161),
                                       ),
-                                      fixedSize: Size(150, 50),
+                                      fixedSize: const Size(150, 50),
                                     ),
-                                    child: Text(
+                                    child: const Text(
                                       "S'inscrire",
                                       style: TextStyle(
                                         color: CustomColors.white,
@@ -210,7 +211,7 @@ ElevatedButton(
                                     ),
                                   ),
 
-                      SizedBox(height: 30), // Marge supérieure
+                      const SizedBox(height: 30), // Marge supérieure
                       Center(
                         child: Container(
                           height: 0.5,
@@ -219,7 +220,7 @@ ElevatedButton(
                         ),
                       ),
 
-                      SizedBox(height: 30), // Marge supérieure
+                      const SizedBox(height: 30), // Marge supérieure
 Container(
                               width: 214,
                               height: 35,
@@ -237,14 +238,14 @@ Container(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsets.only(left: 10),
+                                    padding: const EdgeInsets.only(left: 10),
                                     child: Image.asset(
                                       'lib/assets/images/icons/facebook.png',
                                       width: 18,
                                       height: 18,
                                     ),
                                   ),
-                                  SizedBox(width: 10),
+                                  const SizedBox(width: 10),
                                   const Text(
                                     'S’inscrire avec Facebook',
                                     style: TextStyle(
@@ -257,7 +258,7 @@ Container(
                             ),
 
 
-SizedBox(height: 20), // Marge supérieure
+const SizedBox(height: 20), // Marge supérieure
 Container(
                               width: 214,
                               height: 35,
@@ -275,14 +276,14 @@ Container(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsets.only(left: 10),
+                                    padding: const EdgeInsets.only(left: 10),
                                     child: Image.asset(
                                       'lib/assets/images/icons/apple.png',
                                       width: 18,
                                       height: 18,
                                     ),
                                   ),
-                                  SizedBox(width: 10),
+                                  const SizedBox(width: 10),
                                   const Text(
                                     'S’inscrire avec Apple',
                                     style: TextStyle(
@@ -294,7 +295,7 @@ Container(
                               ),
                             ),
 
-SizedBox(height: 20), // Marge supérieure
+const SizedBox(height: 20), // Marge supérieure
 Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -310,7 +311,7 @@ Row(
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => Login()),
+                                          builder: (context) => const Login()),
                                     );
                                   },
                                   child: const Text(

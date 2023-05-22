@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:padsou/assets/colors.dart';
+import 'package:spotted/assets/colors.dart';
 
 
 class NavigationBarBottom extends StatefulWidget {
@@ -15,10 +15,10 @@ class NavigationBarBottom extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _NavigationBarBottomState createState() => _NavigationBarBottomState();
+  NavigationBarBottomState createState() => NavigationBarBottomState();
 }
 
-class _NavigationBarBottomState extends State<NavigationBarBottom> {
+class NavigationBarBottomState extends State<NavigationBarBottom> {
   int _selectedIndex = 0;
 
   @override

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:padsou/assets/colors.dart';
+import 'package:spotted/assets/colors.dart';
 
 class Profil extends StatefulWidget {
+  const Profil({Key? key}) : super(key: key);
   @override
   AccueilState createState() => AccueilState();
 }
@@ -12,7 +13,7 @@ class AccueilState extends State<Profil> {
     return Scaffold(
       backgroundColor: CustomColors.grey,
       body: Stack(
-        children: [
+        children:const  [
           SingleChildScrollView(
             
           ),

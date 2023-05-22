@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:padsou/assets/colors.dart';
+import 'package:spotted/assets/colors.dart';
 
 class Feed extends StatefulWidget {
 
   
+  const Feed({Key? key}) : super(key: key);
   @override
   ProfilState createState() => ProfilState();
 }
@@ -18,7 +19,7 @@ class ProfilState extends State<Feed> {
       body: Stack(
         children: [
           SingleChildScrollView(
-            padding: EdgeInsets.only(bottom: 25),
+            padding: const EdgeInsets.only(bottom: 25),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -39,7 +40,7 @@ class ProfilState extends State<Feed> {
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.only(bottom: 110.0),
+                  padding: const EdgeInsets.only(bottom: 110.0),
                   decoration: const BoxDecoration(
                     color: CustomColors.white,
                     borderRadius: BorderRadius.only(
