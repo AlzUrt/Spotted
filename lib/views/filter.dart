@@ -11,11 +11,11 @@ class Filter extends StatefulWidget {
 class FilterState extends State<Filter> {
   double sliderValue = 1;
   List<String> sportImages = [
-    'skateboard_gris.png',
+    'skateboard.png',
     'bmx.png',
-    'street_workout.png',
+    'workout.png',
     'parkour.png',
-    'vtt.png',
+    'bike.png',
   ];
   Widget buildMenuItem(int index, String text) {
     String imageFileName = sportImages[index];

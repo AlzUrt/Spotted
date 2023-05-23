@@ -10,11 +10,11 @@ class AddSpot extends StatefulWidget {
 
 class AddSpotState extends State<AddSpot> {
   List<String> sportImages = [
-    'skateboard_gris.png',
+    'skateboard.png',
     'bmx.png',
-    'street_workout.png',
+    'workout.png',
     'parkour.png',
-    'vtt.png',
+    'bike.png',
   ];
   Widget buildMenuItem(int index, String text) {
     String imageFileName = sportImages[index];

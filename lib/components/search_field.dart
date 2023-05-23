@@ -18,9 +18,9 @@ class SearchFieldState extends State<SearchField> {
   List<String> sportImages = [
     'skateboard.png',
     'bmx.png',
-    'street_workout.png',
+    'workout.png',
     'parkour.png',
-    'vtt.png',
+    'bike.png',
   ];
 
   Widget buildMenuItem(int index, String text) {

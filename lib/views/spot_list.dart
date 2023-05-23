@@ -92,13 +92,24 @@ bool _isSearching = false;
   List<String> sportImages = [
     'skateboard.png',
     'bmx.png',
-    'street_workout.png',
+    'workout.png',
     'parkour.png',
-    'vtt.png',
+    'bike.png',
   ];
 
+  
+List<String> selectedSportImages = [
+  'skateboard_rouge.png',
+  'bmx_rouge.png',
+  'workout_rouge.png',
+  'parkour_rouge.png',
+  'bike_rouge.png',
+];
+
   Widget buildMenuItem(int index, String text) {
-    String imageFileName = sportImages[index];
+    String imageFileName = _selectedImageIndex == index
+      ? selectedSportImages[index]
+      : sportImages[index];
     return GestureDetector(
       onTap: () {
         setState(() {

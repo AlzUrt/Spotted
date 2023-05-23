@@ -15,7 +15,7 @@ class Plans extends StatefulWidget {
 
 class PlansState extends State<Plans> {
   int _currentIndex = 0;
-  List<Widget> _pages = []; 
+  List<Widget> _pages = [];
 
   @override
   void initState() {
@@ -70,7 +70,9 @@ class PlansState extends State<Plans> {
                       child: Ink(
                         padding: const EdgeInsets.all(8),
                         child: Image.asset(
-                          'lib/assets/images/icons/home.png',
+                          _currentIndex == 0
+                              ? 'lib/assets/images/icons/home_rouge.png'
+                              : 'lib/assets/images/icons/home.png',
                           height: 24,
                           width: 24,
                         ),
@@ -84,7 +86,9 @@ class PlansState extends State<Plans> {
                       child: Ink(
                         padding: const EdgeInsets.all(8),
                         child: Image.asset(
-                          'lib/assets/images/icons/coeur.png',
+                          _currentIndex == 1
+                              ? 'lib/assets/images/icons/coeur_rouge.png'
+                              : 'lib/assets/images/icons/coeur.png',
                           height: 24,
                           width: 24,
                         ),
@@ -98,7 +102,9 @@ class PlansState extends State<Plans> {
                       child: Ink(
                         padding: const EdgeInsets.all(8),
                         child: Image.asset(
-                          'lib/assets/images/icons/feed.png',
+                          _currentIndex == 2
+                              ? 'lib/assets/images/icons/feed_rouge.png'
+                              : 'lib/assets/images/icons/feed.png',
                           height: 24,
                           width: 24,
                         ),
@@ -112,7 +118,9 @@ class PlansState extends State<Plans> {
                       child: Ink(
                         padding: const EdgeInsets.all(8),
                         child: Image.asset(
-                          'lib/assets/images/icons/chat.png',
+                          _currentIndex == 3
+                              ? 'lib/assets/images/icons/chat_rouge.png'
+                              : 'lib/assets/images/icons/chat.png',
                           height: 24,
                           width: 24,
                         ),
@@ -126,7 +134,9 @@ class PlansState extends State<Plans> {
                       child: Ink(
                         padding: const EdgeInsets.all(8),
                         child: Image.asset(
-                          'lib/assets/images/icons/profil.png',
+                          _currentIndex == 4
+                              ? 'lib/assets/images/icons/profil_rouge.png'
+                              : 'lib/assets/images/icons/profil.png',
                           height: 24,
                           width: 24,
                         ),
@@ -134,34 +144,6 @@ class PlansState extends State<Plans> {
                     ),
                     label: 'Profil',
                   ),
-                  // BottomNavigationBarItem(
-                  //   icon: Padding(
-                  //     padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  //     child: Ink(
-                  //       padding: const EdgeInsets.all(8),
-                  //       child: Image.asset(
-                  //         'lib/assets/images/icons/FirstPage.png',
-                  //         height: 24,
-                  //         width: 24,
-                  //       ),
-                  //     ),
-                  //   ),
-                  //   label: 'FirstPage',
-                  // ),
-                  //                   BottomNavigationBarItem(
-                  //   icon: Padding(
-                  //     padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  //     child: Ink(
-                  //       padding: const EdgeInsets.all(8),
-                  //       child: Image.asset(
-                  //         'lib/assets/images/icons/SecongPage.png',
-                  //         height: 24,
-                  //         width: 24,
-                  //       ),
-                  //     ),
-                  //   ),
-                  //   label: 'SecongPage',
-                  // ),
                 ],
                 onTap: (index) {
                   setState(() {
