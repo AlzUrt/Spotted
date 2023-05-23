@@ -13,24 +13,8 @@ class Start extends StatefulWidget {
 
 class StartState extends State<Start> {
   PageController pageController = PageController(initialPage: 0);
-  Timer? _timer;
 
   @override
-  void initState() {
-    super.initState();
-    _timer = Timer(const Duration(seconds: 2), () {
-      setState(() {
-        _timer?.cancel();
-        changePage();
-      });
-    });
-  }
-
-  @override
-  void dispose() {
-    _timer?.cancel();
-    super.dispose();
-  }
 
   void changePage() {
     int currentPage = pageController.page!.round();
@@ -69,13 +53,6 @@ class StartState extends State<Start> {
           PageView(
             controller: pageController,
             children: <Widget>[
-              Center(
-                child: Image.asset(
-                  'lib/assets/images/icons/logo.png',
-                  height: 400,
-                  width: 200,
-                ),
-              ),
               Stack(
                 children: [
                   Align(

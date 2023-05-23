@@ -15,14 +15,14 @@ final TextEditingController emailController = TextEditingController();
 
   Future<void> login() async {
     try {
-      UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailController.text,
         password: passwordController.text,
       );
       // Si la connexion réussit, userCredential contiendra les informations de l'utilisateur.
 
       // print('Successfully logged in!');
-      Navigator.push(
+      Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => const Plans()),
     );

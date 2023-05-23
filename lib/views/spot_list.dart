@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:spotted/components/search_field.dart';
+// import 'package:spotted/components/search_field.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:spotted/assets/colors.dart';
 import 'package:spotted/views/add_spot.dart';
+import 'package:spotted/ui/typo.dart';
+import 'package:spotted/views/filter.dart';
 
 void main() {
   runApp(const MyApp());
@@ -49,8 +51,7 @@ class SpotListState extends State<SpotList> {
     double latitude = position.latitude;
     double longitude = position.longitude;
 
-    // currentLocation = LatLng(latitude, longitude); // Mettez à jour currentLocation
-    LatLng currentLocation = LatLng(45.8991, 6.1295);
+    currentLocation = LatLng(latitude, longitude); // Mettez à jour currentLocation
     // print(currentLocation);
   }
 
@@ -78,15 +79,77 @@ class SpotListState extends State<SpotList> {
 
 
 
+
+
+
+
+
+
+// test
+bool _isSearching = false;
+  int _selectedImageIndex = 0;
+
+  List<String> sportImages = [
+    'skateboard.png',
+    'bmx.png',
+    'street_workout.png',
+    'parkour.png',
+    'vtt.png',
+  ];
+
+  Widget buildMenuItem(int index, String text) {
+    String imageFileName = sportImages[index];
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          _selectedImageIndex = index;
+        });
+      },
+      child: Column(
+        children: [
+          Image.asset('lib/assets/images/logo_sport/$imageFileName',
+              height: 32.0, width: 32.0),
+          const SizedBox(height: 5.0),
+          Text(
+            text,
+            style: TextStyle(
+              color: _selectedImageIndex == index ? Colors.red : Colors.black,
+              fontSize: 13.0,
+            ),
+          ),
+          const SizedBox(height: 9.0),
+          Opacity(
+            opacity: _selectedImageIndex == index ? 1.0 : 0.0,
+            child: Container(
+              height: 3.0,
+              width: 60.0,
+              color: CustomColors.red,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+
+
+
+
+
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        backgroundColor: Colors.white,
-        title: const SearchField(),
-        toolbarHeight: 183,
-      ),
+      // appBar: AppBar(
+      //   automaticallyImplyLeading: false,
+      //   backgroundColor: Colors.white,
+      //   title: const SearchField(),
+      //   toolbarHeight: 183,
+      // ),
+      
       body: Stack(
         children: [
           PageView(
@@ -98,7 +161,7 @@ class SpotListState extends State<SpotList> {
                   slivers: [
                     SliverPadding(
                       padding:
-                          const EdgeInsets.only(left: 32, right: 32, top: 32),
+                          const EdgeInsets.only(left: 32, right: 32, top: 215),
                       sliver: SliverList(
                         delegate: SliverChildListDelegate(
                           [
@@ -632,9 +695,9 @@ class SpotListState extends State<SpotList> {
           Positioned(
             left: 0,
             right: 0,
-            top: 520,
+            bottom: 90,
             child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 138),
+              margin: const EdgeInsets.symmetric(horizontal: 131),
               child: Column(
                 children: [
                   SizedBox(
@@ -718,6 +781,143 @@ class SpotListState extends State<SpotList> {
               ),
             ),
           ),
+           Positioned(
+      left: 0,
+      right: 0,
+      top: 0,
+      
+      child: Container(
+        decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(4.0),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.grey.withOpacity(0.5),
+          spreadRadius: 2,
+          blurRadius: 7,
+          offset: const Offset(0, 3),
+        ),
+      ],
+        ),
+        child: Column(
+          children: [
+            const SizedBox(height: 55.0),
+            Container(
+              height: 65.0,
+              margin: const EdgeInsets.symmetric(horizontal: 29.0),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(4.0),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 2,
+                    blurRadius: 7,
+                    offset: const Offset(0, 3),
+                  ),
+                ],
+              ),
+              child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    _isSearching = true;
+                  });
+                },
+                child: Row(
+                  children: [
+                    const SizedBox(width: 10.0),
+                    const Icon(Icons.search, color: CustomColors.black),
+                    const SizedBox(width: 10.0),
+                    Expanded(
+                      child: _isSearching
+                          ? TextFormField(
+                              decoration: InputDecoration(
+                                border: InputBorder.none,
+                                hintText: '',
+                                hintStyle: CustomTextStyle.title(),
+                              ),
+                            )
+                          : Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Spot',
+                                  style: CustomTextStyle.title(),
+                                ),
+                                const SizedBox(height: 5.0),
+                                Text(
+                                  'Une adresse ∙ une ville ∙ un sport ∙ ...',
+                                  style: CustomTextStyle.subtitle(),
+                                ),
+                              ],
+                            ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const Filter(),
+                          ),
+                        );
+                      }, // Accéder à onPressedFilter via widget
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 10.0),
+                        child: Image.asset(
+                          'lib/assets/images/icons/filter_icon.png',
+                          width: 40.0,
+                          height: 40.0,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 10.0),
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 29.0),
+              child: Column(
+                children: [
+                  Container(
+                    color: Colors.white,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        buildMenuItem(0, 'Skateboard'),
+                        buildMenuItem(1, 'BMX'),
+                        buildMenuItem(2, 'Street Workout'),
+                        buildMenuItem(3, 'Parkour'),
+                        buildMenuItem(4, 'VTT'),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    ),
+    Positioned(
+      top: -15,
+      left: 0,
+      right: 0,
+      child: Container(
+        height: 5,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              CustomColors.red.withOpacity(0.12),
+              Colors.transparent,
+            ],
+          ),
+        ),
+      ),
+    ),
         ],
       ),
     );

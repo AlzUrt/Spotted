@@ -40,12 +40,11 @@ class AddSpotState extends State<AddSpot> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: CustomColors.white,
-      body: Stack(
-        
-        children: [
-              Padding(
-      padding: const EdgeInsets.only(top: 50.0),
+    backgroundColor: CustomColors.white,
+    body: SafeArea(
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.only(top: 30.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -300,8 +299,8 @@ class AddSpotState extends State<AddSpot> {
             ],
           ),
         ),
-        ],
       ),
+    ),
     );
   }
 }

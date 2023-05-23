@@ -41,14 +41,14 @@ class FilterState extends State<Filter> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: CustomColors.white,
-        body: Stack(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 50.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+    backgroundColor: CustomColors.white,
+    body: SafeArea(
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.only(top: 30.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
                   GestureDetector(
                     onTap: () {
                       Navigator.push(
@@ -416,7 +416,8 @@ class FilterState extends State<Filter> {
                 ],
               ),
             ),
-          ],
-        ));
+        ),
+      ),
+    );
   }
 }

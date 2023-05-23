@@ -44,7 +44,7 @@ Future<void> register() async {
       // print('══╡ User successfully added to Firestore!╞═══════════════════════════════════════════════════════════');
     }
 
-    Navigator.push(
+    Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => const Plans()),
     );
@@ -84,7 +84,7 @@ Future<void> register() async {
                   ),
                 ),
 
-                const SizedBox(height: 80), // Marge supérieure
+                const SizedBox(height: 50), // Marge supérieure
                 // Marge supérieure
                 Center(
                   child: Container(
