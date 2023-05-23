@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:spotted/assets/colors.dart';
 
 class Feed extends StatefulWidget {
 
   
   const Feed({Key? key}) : super(key: key);
   @override
-  ProfilState createState() => ProfilState();
+  FeedState createState() => FeedState();
 }
 
-class ProfilState extends State<Feed> {
+class FeedState extends State<Feed> {
 
   
   @override
@@ -17,45 +16,9 @@ class ProfilState extends State<Feed> {
     return Scaffold(
       backgroundColor: Colors.purpleAccent,
       body: Stack(
-        children: [
+        children: const [
           SingleChildScrollView(
-            padding: const EdgeInsets.only(bottom: 25),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(
-                  height: 25,
-                ),
-                SizedBox(
-                  height: 200,
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Container(
-                          padding: const EdgeInsets.only(
-                              top: 50.0, right: 150.0, left: 50.0),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.only(bottom: 110.0),
-                  decoration: const BoxDecoration(
-                    color: CustomColors.white,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(50),
-                      topRight: Radius.circular(50),
-                    ),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.max,
-                  ),
-                ),
-              ],
-            ),
+            
           ),
         ],
       ),

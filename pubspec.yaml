@@ -15,6 +15,10 @@ dependencies:
     sdk: flutter  
   carousel_slider: ^4.0.0 
   cupertino_icons: ^1.0.2
+  #firebase
+  firebase_core: ^2.9.0
+  firebase_auth: ^4.4.2
+  cloud_firestore: ^4.7.1
 
 dev_dependencies:
   flutter_test:

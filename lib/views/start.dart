@@ -12,7 +12,7 @@ class Start extends StatefulWidget {
 }
 
 class StartState extends State<Start> {
-  PageController _pageController = PageController(initialPage: 0);
+  PageController pageController = PageController(initialPage: 0);
   Timer? _timer;
 
   @override
@@ -33,7 +33,7 @@ class StartState extends State<Start> {
   }
 
   void changePage() {
-    int currentPage = _pageController.page!.round();
+    int currentPage = pageController.page!.round();
     int nextPage = currentPage == 4 ? 0 : currentPage + 1;
     if (nextPage == 0) {
       Navigator.push(
@@ -41,7 +41,7 @@ class StartState extends State<Start> {
         MaterialPageRoute(builder: (context) => const Plans()),
       );
     } else {
-      _pageController.animateToPage(
+      pageController.animateToPage(
         nextPage,
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeIn,
@@ -51,7 +51,7 @@ class StartState extends State<Start> {
 
   skip() {
     // go to page 4
-    _pageController.animateToPage(
+    pageController.animateToPage(
       4,
       duration: const Duration(milliseconds: 300),
       curve: Curves.easeIn,
@@ -67,7 +67,7 @@ class StartState extends State<Start> {
             color: CustomColors.white,
           ),
           PageView(
-            controller: _pageController,
+            controller: pageController,
             children: <Widget>[
               Center(
                 child: Image.asset(
