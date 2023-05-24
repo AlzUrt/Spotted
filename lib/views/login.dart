@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:spotted/assets/colors.dart';
 import 'package:spotted/views/plans.dart';
 
+import 'package:spotted/components/error_message.dart';
+
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
   @override
@@ -10,10 +12,16 @@ class Login extends StatefulWidget {
 }
 
 class LoginState extends State<Login> {
-final TextEditingController emailController = TextEditingController();
+  String errorText = '';
+  int heightValue = 50;
+  final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
   Future<void> login() async {
+    setState(() {
+      errorText = ''; // Réinitialiser l'erreur texte à chaque appel de login
+    });
+
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailController.text,
@@ -23,14 +31,25 @@ final TextEditingController emailController = TextEditingController();
 
       // print('Successfully logged in!');
       Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => const Plans()),
-    );
+        context,
+        MaterialPageRoute(builder: (context) => const Plans()),
+      );
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        // print('No user found for that email.');
+        setState(() {
+          errorText =
+              'Aucun utilisateur trouvé avec cet e-mail.'; // Assigner le message d'erreur approprié
+        });
       } else if (e.code == 'wrong-password') {
-        // print('Wrong password provided for that user.');
+        setState(() {
+          errorText =
+              'Mot de passe incorrect pour cet utilisateur.'; // Assigner le message d'erreur approprié
+        });
+      } else if (e.code == 'invalid-email') {
+        setState(() {
+          errorText =
+              'Adresse e-mail invalide.'; // Assigner le message d'erreur approprié
+        });
       }
     }
   }
@@ -45,9 +64,13 @@ final TextEditingController emailController = TextEditingController();
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SizedBox(
-                    height:
-                        100), // Espace vide pour pousser l'image vers le haut
+                const SizedBox(height: 50),
+                // message d'erreur
+                  ErrorComponent(
+                    errorText: errorText,
+                  ),
+                SizedBox(height: errorText.isEmpty ? 66 : 0),
+
                 Center(
                   child: Image.asset(
                     'lib/assets/images/icons/logo.png',
@@ -74,7 +97,7 @@ final TextEditingController emailController = TextEditingController();
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children:  [
+                      children: [
                         Expanded(
                           child: TextField(
                             controller: emailController,
@@ -113,7 +136,7 @@ final TextEditingController emailController = TextEditingController();
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children:  [
+                      children: [
                         Expanded(
                           child: TextField(
                             controller: passwordController,

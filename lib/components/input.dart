@@ -29,7 +29,7 @@ class CustomInputField extends StatelessWidget {
                 decoration: InputDecoration(
                   hintText: hintText,
                   border: InputBorder.none,
-                  contentPadding: EdgeInsets.symmetric(horizontal: 30),
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 30),
                   hintStyle: const TextStyle(
                     fontWeight: FontWeight.bold,
                   ),

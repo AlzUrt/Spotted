@@ -4,32 +4,44 @@ import 'package:spotted/assets/colors.dart';
 import 'package:spotted/views/login.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:spotted/views/plans.dart';
+import 'package:spotted/components/error_message.dart';
+
 class Register extends StatefulWidget {
+
   const Register({Key? key}) : super(key: key);
   @override
   RegisterState createState() => RegisterState();
 }
 
 class RegisterState extends State<Register> {
-
+  String errorText = '';
   final TextEditingController emailController = TextEditingController();
-final TextEditingController passwordController = TextEditingController();
-final TextEditingController confirmPasswordController = TextEditingController();
-final TextEditingController nameController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
+  final TextEditingController nameController = TextEditingController();
 
-Future<void> register() async {
-  try {
-    if (passwordController.text != confirmPasswordController.text) {
-      // print('Passwords do not match!');
-      return;
-    }
+  Future<void> register() async {
+    setState(() {
+      errorText = ''; // Réinitialiser l'erreur texte à chaque appel de register
+    });
 
-    UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-      email: emailController.text,
-      password: passwordController.text,
-    );
+    try {
+      if (passwordController.text != confirmPasswordController.text) {
+        setState(() {
+          errorText =
+              'Les mots de passe ne correspondent pas !'; // Assigner le message d'erreur approprié
+        });
+        return;
+      }
 
-    // print('══╡ User successfully registered!╞═══════════════════════════════════════════════════════════');
+      UserCredential userCredential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailController.text,
+        password: passwordController.text,
+      );
+
+      // print('══╡ User successfully registered!╞═══════════════════════════════════════════════════════════');
 
     // Ajouter le nom à Firestore
     CollectionReference usersRef = FirebaseFirestore.instance.collection('users');
@@ -48,20 +60,27 @@ Future<void> register() async {
       context,
       MaterialPageRoute(builder: (context) => const Plans()),
     );
-  } on FirebaseAuthException catch (e) {
-    if (e.code == 'weak-password') {
-      // print('The password provided is too weak.');
-    } else if (e.code == 'email-already-in-use') {
-      // print('The account already exists for that email.');
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        setState(() {
+          errorText ='Le mot de passe fourni est trop faible.'; // Assigner le message d'erreur approprié
+        });
+      } else if (e.code == 'email-already-in-use') {
+        setState(() {
+          errorText ='Le compte existe déjà pour cet e-mail.'; // Assigner le message d'erreur approprié
+        });
+      } else if (e.code == 'invalid-email') {
+        setState(() {
+          errorText ="Adresse e-mail invalide."; // Assigner le message d'erreur approprié
+        });
+      }
+    } catch (e) {
+      setState(() {
+        errorText = e.toString(); // Assigner le message d'erreur générique
+        
+      });
     }
-  } catch (e) {
-    // print(e);
   }
-}
-
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -73,9 +92,12 @@ Future<void> register() async {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SizedBox(
-                    height:
-                        100), // Espace vide pour pousser l'image vers le haut
+                const SizedBox(height: 50),
+                // message d'erreur
+                  ErrorComponent(
+                    errorText: errorText,
+                  ),
+                SizedBox(height: errorText.isEmpty ? 66 : 0),
                 Center(
                   child: Image.asset(
                     'lib/assets/images/icons/logo.png',
@@ -102,11 +124,11 @@ Future<void> register() async {
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children:  [
+                      children: [
                         Expanded(
                           child: TextField(
                             controller: emailController,
-                            decoration: const  InputDecoration(
+                            decoration: const InputDecoration(
                               hintText: 'Email',
                               border: InputBorder.none,
                               contentPadding:
@@ -116,7 +138,6 @@ Future<void> register() async {
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            
                           ),
                         ),
                       ],
@@ -142,7 +163,7 @@ Future<void> register() async {
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children:  [
+                      children: [
                         Expanded(
                           child: TextField(
                             controller: nameController,
@@ -181,7 +202,7 @@ Future<void> register() async {
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children:  [
+                      children: [
                         Expanded(
                           child: TextField(
                             controller: passwordController,
@@ -221,7 +242,7 @@ Future<void> register() async {
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children:  [
+                      children: [
                         Expanded(
                           child: TextField(
                             controller: confirmPasswordController,

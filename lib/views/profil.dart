@@ -14,8 +14,10 @@ class Profil extends StatefulWidget {
 
 class ProfilState extends State<Profil> {
   late String userName = '';
-  bool isDataLoaded = false; // État pour vérifier si les données ont été chargées
-  bool isUserLoggedIn = false; // État pour vérifier si l'utilisateur est connecté
+  bool isDataLoaded =
+      false; // État pour vérifier si les données ont été chargées
+  bool isUserLoggedIn =
+      false; // État pour vérifier si l'utilisateur est connecté
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   @override
@@ -60,7 +62,8 @@ class ProfilState extends State<Profil> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const SizedBox(height: 30),
-                    if (isDataLoaded && isUserLoggedIn) // Affiche le texte uniquement lorsque les données ont été chargées et l'utilisateur est connecté
+                    if (isDataLoaded &&
+                        isUserLoggedIn) // Affiche le texte uniquement lorsque les données ont été chargées et l'utilisateur est connecté
                       Text(
                         'Bonjour $userName',
                         style: const TextStyle(
@@ -70,18 +73,18 @@ class ProfilState extends State<Profil> {
                         ),
                       ),
                     if (!isUserLoggedIn) // Affiche le bouton "Connectez-vous" si l'utilisateur n'est pas connecté
-                                    CustomButton(
-  buttonText: 'Connectez-vous',
-  buttonColor: CustomColors.red,
-  textColor: Colors.white,
-  onPressed: () {
-    Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const Login()),
-                        );
-  },
-),
+                      CustomButton(
+                        buttonText: 'Connectez-vous',
+                        buttonColor: CustomColors.red,
+                        textColor: Colors.white,
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Login()),
+                          );
+                        },
+                      ),
                   ],
                 ),
               ),

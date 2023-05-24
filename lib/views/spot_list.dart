@@ -195,7 +195,7 @@ List<String> selectedSportImages = [
   scrollDirection: Axis.horizontal,
   child: Row(
     crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
+    children: const [
       CustomHorizontalCard(
         imagePath: 'lib/assets/images/image/SkatePark_Bonlieu.png',
         title: 'SkatePark de Bonlieu',
@@ -203,7 +203,7 @@ List<String> selectedSportImages = [
         description: 'Le ball est vraiment génial ! Super agréable pour ...',
         rating: '4.3 ★',
       ),
-      const SizedBox(width: 10), // Espacement entre les deux éléments
+       SizedBox(width: 10), // Espacement entre les deux éléments
       CustomHorizontalCard(
         imagePath: 'lib/assets/images/image/SkatePark_Bonlieu.png',
         title: 'SkatePark de Bonlieu',
@@ -211,7 +211,7 @@ List<String> selectedSportImages = [
         description: 'Le ball est vraiment génial ! Super agréable pour ...',
         rating: '4.3 ★',
       ),
-      const SizedBox(width: 10), // Espacement entre les deux éléments
+       SizedBox(width: 10), // Espacement entre les deux éléments
       CustomHorizontalCard(
         imagePath: 'lib/assets/images/image/SkatePark_Bonlieu.png',
         title: 'SkatePark de Bonlieu',
@@ -244,7 +244,7 @@ List<String> selectedSportImages = [
                                 ),
                                 const SizedBox(height: 10),
                                 
-CustomImageCard(
+const CustomImageCard(
   imagePath: 'lib/assets/images/image/skatepark_long.png',
   title: 'SkatePark de Bonlieu',
   rating: '4.3 ★',
@@ -252,7 +252,7 @@ CustomImageCard(
   description: 'Le ball est vraiment génial ! Super agréable pour ...',
 ),
 const SizedBox(height: 20),
-CustomImageCard(
+const CustomImageCard(
   imagePath: 'lib/assets/images/image/skatepark_long.png',
   title: 'SkatePark de Bonlieu',
   rating: '4.3 ★',
@@ -273,17 +273,17 @@ CustomImageCard(
   scrollDirection: Axis.horizontal,
   child: Row(
     crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
+    children: const [
       CustomCityCard(
         imagePath: 'lib/assets/images/image/lyon.png',
         cityName: 'Lyon',
       ),
-      const SizedBox(width: 10), // Espacement entre les deux éléments
+       SizedBox(width: 10), // Espacement entre les deux éléments
       CustomCityCard(
         imagePath: 'lib/assets/images/image/paris.png',
         cityName: 'Paris',
       ),
-      const SizedBox(width: 10), // Espacement entre les deux éléments
+       SizedBox(width: 10), // Espacement entre les deux éléments
       CustomCityCard(
         imagePath: 'lib/assets/images/image/SkatePark_Bonlieu.png',
         cityName: 'Marseille',

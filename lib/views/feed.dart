@@ -15,13 +15,12 @@ class FeedState extends State<Feed> {
       body: Stack(
         children: [
           SingleChildScrollView(
-            child: Container(
-              // Définir la taille du conteneur en fonction de la taille de l'écran
+            child: SizedBox(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height,
               child: Image.asset(
-                'lib/assets/images/gif/swag.gif', // Remplacez "assets/your_gif.gif" par le chemin de votre fichier GIF
-                fit: BoxFit.cover, // Pour ajuster le GIF à la taille du conteneur
+                'lib/assets/images/gif/swag.gif',
+                fit: BoxFit.cover,
               ),
             ),
           ),
