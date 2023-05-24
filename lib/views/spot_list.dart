@@ -348,94 +348,91 @@ const CustomImageCard(
             ],
           ),
           Positioned(
-            left: 0,
-            right: 0,
-            bottom: 90,
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 131),
-              child: Column(
-                children: [
-                  SizedBox(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(3.3),
-                            color: CustomColors.red,
-                          ),
-                          child: Material(
-                            color: Colors.transparent,
-                            child: InkWell(
-                              onTap: () {
-                                getLocation();
-                                changePage();
-                              },
-                              child: Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      buttonText,
-                                      style: const TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    const SizedBox(width: 8),
-                                    Image.asset(
-                                      buttonImage,
-                                      width: 20,
-                                      height: 20,
-                                      color: Colors.white,
-                                    ),
-                                  ],
-                                ),
-                              ),
+  left: 0,
+  right: 0,
+  bottom: 90,
+  child: Container(
+    // margin: const EdgeInsets.symmetric(horizontal: 22),
+    child: Column(
+      children: [
+        SizedBox(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center, // Modifier la justification ici
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(3.3),
+                  color: CustomColors.red,
+                ),
+                child: Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    onTap: () {
+                      getLocation();
+                      changePage();
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            buttonText,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
-                        ),
-                        const SizedBox(width: 16),
-                        Container(
-                          height: 30.0,
-                          width: 30.0,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(3.3),
-                            color: CustomColors.red,
+                          const SizedBox(width: 8),
+                          Image.asset(
+                            buttonImage,
+                            width: 20,
+                            height: 20,
+                            color: Colors.white,
                           ),
-                          child: Material(
-                            color: Colors.transparent,
-                            child: InkWell(
-                              onTap: (
-                                  // get current location
-
-                                  ) {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const AddSpot()),
-                                );
-                              },
-                              child: Padding(
-                                padding: const EdgeInsets.all(0),
-                                child: Image.asset(
-                                  'lib/assets/images/icons/plus.png',
-                                  width: 150,
-                                  height: 150,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                ],
+                ),
               ),
-            ),
+              const SizedBox(width: 12), // Espacement de 22 pixels entre les boutons
+              Container(
+                height: 30.0,
+                width: 30.0,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(3.3),
+                  color: CustomColors.red,
+                ),
+                child: Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const AddSpot()),
+                      );
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(0),
+                      child: Image.asset(
+                        'lib/assets/images/icons/plus.png',
+                        width: 150,
+                        height: 150,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
+        ),
+      ],
+    ),
+  ),
+),
+
            Positioned(
       left: 0,
       right: 0,
