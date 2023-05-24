@@ -11,6 +11,7 @@ Pour installer et exécuter Spotted sur votre machine locale, veuillez suivre le
 **1. Clonez le répertoire :**
 
 ``` git clone https://github.com/AlzUrt/Spotted.git ```
+
 ``` cd Spotted ```
 
 **2. Récupérez les dépendances :**

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spotted/assets/colors.dart';
 import 'package:spotted/views/plans.dart';
-
+import 'package:spotted/components/button.dart';
 class Filter extends StatefulWidget {
   const Filter({Key? key}) : super(key: key);
   @override
@@ -393,26 +393,15 @@ class FilterState extends State<Filter> {
                     ),
                   ),
                   const SizedBox(height: 30),
-                  Center(
-                    child: Container(
-                      width: 150,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        color: CustomColors.red,
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      child: const Center(
-                        child: Text(
-                          'Rechercher',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
+                  CustomButton(
+  buttonText: 'Rechercher',
+  buttonColor: CustomColors.red,
+  textColor: Colors.white,
+  onPressed: () {
+    // Logique à exécuter lors du clic sur le bouton
+  },
+),
+
                 ],
               ),
             ),

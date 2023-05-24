@@ -7,6 +7,9 @@ import 'package:spotted/assets/colors.dart';
 import 'package:spotted/views/add_spot.dart';
 import 'package:spotted/ui/typo.dart';
 import 'package:spotted/views/filter.dart';
+import 'package:spotted/components/spot_card_like.dart';
+import 'package:spotted/components/spot_card.dart';
+import 'package:spotted/components/city_card.dart';
 
 void main() {
   runApp(const MyApp());
@@ -189,211 +192,37 @@ List<String> selectedSportImages = [
                                 ),
                                 const SizedBox(height: 10),
                                 SingleChildScrollView(
-                                  scrollDirection: Axis.horizontal,
-                                  child: Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      SizedBox(
-                                        width: 220,
-                                        height: 340,
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Container(
-                                              width: 200,
-                                              height: 200,
-                                              decoration: const BoxDecoration(
-                                                image: DecorationImage(
-                                                  image: AssetImage(
-                                                      'lib/assets/images/image/SkatePark_Bonlieu.png'),
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ),
-                                            ),
-                                            const SizedBox(height: 10),
-                                            const Text(
-                                              'SkatePark de Bonlieu',
-                                              style: TextStyle(
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.bold,
-                                                color: CustomColors.black,
-                                              ),
-                                            ),
-                                            const SizedBox(height: 5),
-                                            const Text(
-                                              'À 5km de vous !',
-                                              style: TextStyle(
-                                                fontSize: 16,
-                                                color: CustomColors.grey,
-                                              ),
-                                            ),
-                                            const SizedBox(height: 5),
-                                            const Text(
-                                              'Le ball est vraiment génial ! Super agréable pour ...',
-                                              style: TextStyle(
-                                                fontSize: 16,
-                                                color: CustomColors.black,
-                                              ),
-                                            ),
-                                            const SizedBox(height: 5),
-                                            const Text(
-                                              '4.3 ★',
-                                              style: TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.bold,
-                                                color: CustomColors.black,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      const SizedBox(
-                                          width:
-                                              10), // Espacement entre les deux éléments
-                                      SizedBox(
-                                        width: 220,
-                                        height: 340,
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            SizedBox(
-                                              width: 220,
-                                              height: 340,
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Container(
-                                                    width: 200,
-                                                    height: 200,
-                                                    decoration:
-                                                        const BoxDecoration(
-                                                      image: DecorationImage(
-                                                        image: AssetImage(
-                                                            'lib/assets/images/image/SkatePark_Bonlieu.png'),
-                                                        fit: BoxFit.cover,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  const SizedBox(height: 10),
-                                                  const Text(
-                                                    'SkatePark de Bonlieu',
-                                                    style: TextStyle(
-                                                      fontSize: 20,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      color: CustomColors.black,
-                                                    ),
-                                                  ),
-                                                  const SizedBox(height: 5),
-                                                  const Text(
-                                                    'À 5km de vous !',
-                                                    style: TextStyle(
-                                                      fontSize: 16,
-                                                      color: CustomColors.grey,
-                                                    ),
-                                                  ),
-                                                  const SizedBox(height: 5),
-                                                  const Text(
-                                                    'Le ball est vraiment génial ! Super agréable pour ...',
-                                                    style: TextStyle(
-                                                      fontSize: 16,
-                                                      color: CustomColors.black,
-                                                    ),
-                                                  ),
-                                                  const SizedBox(height: 5),
-                                                  const Text(
-                                                    '4.3 ★',
-                                                    style: TextStyle(
-                                                      fontSize: 16,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      color: CustomColors.black,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      const SizedBox(
-                                          width:
-                                              10), // Espacement entre les deux éléments
-                                      SizedBox(
-                                        width: 220,
-                                        height: 340,
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            SizedBox(
-                                              width: 220,
-                                              height: 340,
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Container(
-                                                    width: 200,
-                                                    height: 200,
-                                                    decoration:
-                                                        const BoxDecoration(
-                                                      image: DecorationImage(
-                                                        image: AssetImage(
-                                                            'lib/assets/images/image/SkatePark_Bonlieu.png'),
-                                                        fit: BoxFit.cover,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  const SizedBox(height: 10),
-                                                  const Text(
-                                                    'SkatePark de Bonlieu',
-                                                    style: TextStyle(
-                                                      fontSize: 20,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      color: CustomColors.black,
-                                                    ),
-                                                  ),
-                                                  const SizedBox(height: 5),
-                                                  const Text(
-                                                    'À 5km de vous !',
-                                                    style: TextStyle(
-                                                      fontSize: 16,
-                                                      color: CustomColors.grey,
-                                                    ),
-                                                  ),
-                                                  const SizedBox(height: 5),
-                                                  const Text(
-                                                    'Le ball est vraiment génial ! Super agréable pour ...',
-                                                    style: TextStyle(
-                                                      fontSize: 16,
-                                                      color: CustomColors.black,
-                                                    ),
-                                                  ),
-                                                  const SizedBox(height: 5),
-                                                  const Text(
-                                                    '4.3 ★',
-                                                    style: TextStyle(
-                                                      fontSize: 16,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      color: CustomColors.black,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
+  scrollDirection: Axis.horizontal,
+  child: Row(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      CustomHorizontalCard(
+        imagePath: 'lib/assets/images/image/SkatePark_Bonlieu.png',
+        title: 'SkatePark de Bonlieu',
+        distance: 'À 5km de vous !',
+        description: 'Le ball est vraiment génial ! Super agréable pour ...',
+        rating: '4.3 ★',
+      ),
+      const SizedBox(width: 10), // Espacement entre les deux éléments
+      CustomHorizontalCard(
+        imagePath: 'lib/assets/images/image/SkatePark_Bonlieu.png',
+        title: 'SkatePark de Bonlieu',
+        distance: 'À 5km de vous !',
+        description: 'Le ball est vraiment génial ! Super agréable pour ...',
+        rating: '4.3 ★',
+      ),
+      const SizedBox(width: 10), // Espacement entre les deux éléments
+      CustomHorizontalCard(
+        imagePath: 'lib/assets/images/image/SkatePark_Bonlieu.png',
+        title: 'SkatePark de Bonlieu',
+        distance: 'À 5km de vous !',
+        description: 'Le ball est vraiment génial ! Super agréable pour ...',
+        rating: '4.3 ★',
+      ),
+    ],
+  ),
+),
+
                                 const SizedBox(height: 20),
                                 Row(
                                   children: [
@@ -414,101 +243,22 @@ List<String> selectedSportImages = [
                                   ],
                                 ),
                                 const SizedBox(height: 10),
-                                Image.asset(
-                                  'lib/assets/images/image/skatepark_long.png',
-                                  width: 350,
-                                  height: 105,
-                                ),
-                                const SizedBox(height: 10),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: const [
-                                        Text(
-                                          "SkatePark de Bonlieu",
-                                          style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                            color: CustomColors.black,
-                                          ),
-                                        ),
-                                        Text(
-                                          "4.3 ★",
-                                          style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                            color: CustomColors.black,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    const Text(
-                                      "À 5km de vous !",
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        color: CustomColors.grey,
-                                      ),
-                                    ),
-                                    const Text(
-                                      "Le ball est vraiment génial ! Super agréable pour ...",
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        color: CustomColors.black,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(height: 20),
-                                Image.asset(
-                                  'lib/assets/images/image/skatepark_long.png',
-                                  width: 350,
-                                  height: 105,
-                                ),
-                                const SizedBox(height: 10),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: const [
-                                        Text(
-                                          "SkatePark de Bonlieu",
-                                          style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                            color: CustomColors.black,
-                                          ),
-                                        ),
-                                        Text(
-                                          "4.3 ★",
-                                          style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                            color: CustomColors.black,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    const Text(
-                                      "À 5km de vous !",
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        color: CustomColors.grey,
-                                      ),
-                                    ),
-                                    const Text(
-                                      "Le ball est vraiment génial ! Super agréable pour ...",
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        color: CustomColors.black,
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                
+CustomImageCard(
+  imagePath: 'lib/assets/images/image/skatepark_long.png',
+  title: 'SkatePark de Bonlieu',
+  rating: '4.3 ★',
+  distance: 'À 5km de vous !',
+  description: 'Le ball est vraiment génial ! Super agréable pour ...',
+),
+const SizedBox(height: 20),
+CustomImageCard(
+  imagePath: 'lib/assets/images/image/skatepark_long.png',
+  title: 'SkatePark de Bonlieu',
+  rating: '4.3 ★',
+  distance: 'À 5km de vous !',
+  description: 'Le ball est vraiment génial ! Super agréable pour ...',
+),
                                 const SizedBox(height: 30),
                                 const Text(
                                   "Par ville",
@@ -520,134 +270,28 @@ List<String> selectedSportImages = [
                                 ),
                                 const SizedBox(height: 10),
                                 SingleChildScrollView(
-                                  scrollDirection: Axis.horizontal,
-                                  child: Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      SizedBox(
-                                        width: 220,
-                                        height: 340,
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Container(
-                                              width: 200,
-                                              height: 200,
-                                              decoration: const BoxDecoration(
-                                                image: DecorationImage(
-                                                  image: AssetImage(
-                                                      'lib/assets/images/image/lyon.png'),
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ),
-                                            ),
-                                            const SizedBox(height: 10),
-                                            const Text(
-                                              'Lyon',
-                                              style: TextStyle(
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.bold,
-                                                color: CustomColors.black,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      const SizedBox(
-                                          width:
-                                              10), // Espacement entre les deux éléments
-                                      SizedBox(
-                                        width: 220,
-                                        height: 340,
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            SizedBox(
-                                              width: 220,
-                                              height: 340,
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Container(
-                                                    width: 200,
-                                                    height: 200,
-                                                    decoration:
-                                                        const BoxDecoration(
-                                                      image: DecorationImage(
-                                                        image: AssetImage(
-                                                            'lib/assets/images/image/paris.png'),
-                                                        fit: BoxFit.cover,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  const SizedBox(height: 10),
-                                                  const Text(
-                                                    'Paris',
-                                                    style: TextStyle(
-                                                      fontSize: 20,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      color: CustomColors.black,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      const SizedBox(
-                                          width:
-                                              10), // Espacement entre les deux éléments
-                                      SizedBox(
-                                        width: 220,
-                                        height: 340,
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            SizedBox(
-                                              width: 220,
-                                              height: 340,
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Container(
-                                                    width: 200,
-                                                    height: 200,
-                                                    decoration:
-                                                        const BoxDecoration(
-                                                      image: DecorationImage(
-                                                        image: AssetImage(
-                                                            'lib/assets/images/image/SkatePark_Bonlieu.png'),
-                                                        fit: BoxFit.cover,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  const SizedBox(height: 10),
-                                                  const Text(
-                                                    'Marseille',
-                                                    style: TextStyle(
-                                                      fontSize: 20,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      color: CustomColors.black,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
+  scrollDirection: Axis.horizontal,
+  child: Row(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      CustomCityCard(
+        imagePath: 'lib/assets/images/image/lyon.png',
+        cityName: 'Lyon',
+      ),
+      const SizedBox(width: 10), // Espacement entre les deux éléments
+      CustomCityCard(
+        imagePath: 'lib/assets/images/image/paris.png',
+        cityName: 'Paris',
+      ),
+      const SizedBox(width: 10), // Espacement entre les deux éléments
+      CustomCityCard(
+        imagePath: 'lib/assets/images/image/SkatePark_Bonlieu.png',
+        cityName: 'Marseille',
+      ),
+    ],
+  ),
+),
+
                                 const SizedBox(height: 30),
                               ],
                             ),

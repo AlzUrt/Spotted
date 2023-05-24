@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:spotted/assets/colors.dart';
 import 'package:spotted/views/plans.dart';
-
+import 'package:spotted/components/input.dart';
+import 'package:spotted/components/button.dart';
 class AddSpot extends StatefulWidget {
   const AddSpot({Key? key}) : super(key: key);
   @override
@@ -101,76 +102,86 @@ class AddSpotState extends State<AddSpot> {
               ),
               const SizedBox(height: 30), // Marge supérieure
               // Marge supérieure
+              // Center(
+              //   child: Container(
+              //     width: 314,
+              //     height: 55,
+              //     decoration: BoxDecoration(
+              //       color: Colors.white,
+              //       boxShadow: const [
+              //         BoxShadow(
+              //           color: Color.fromRGBO(0, 0, 0, 0.15),
+              //           blurRadius: 13.7143,
+              //         ),
+              //       ],
+              //       borderRadius: BorderRadius.circular(4.04161),
+              //     ),
+              //     child: Row(
+              //       mainAxisAlignment: MainAxisAlignment.center,
+              //       children: const [
+              //         Expanded(
+              //           child: TextField(
+              //             decoration: InputDecoration(
+              //               hintText: 'Nom du spot',
+              //               border: InputBorder.none,
+              //               contentPadding:
+              //                   EdgeInsets.symmetric(horizontal: 30),
+              //               hintStyle: TextStyle(
+              //                 fontWeight: FontWeight.bold,
+              //               ),
+              //             ),
+              //           ),
+              //         ),
+              //       ],
+              //     ),
+              //   ),
+              // ),
+              // const SizedBox(height: 30), // Marge supérieure
+              // // Marge supérieure
+              // Center(
+              //   child: Container(
+              //     width: 314,
+              //     height: 55,
+              //     decoration: BoxDecoration(
+              //       color: Colors.white,
+              //       boxShadow: const [
+              //         BoxShadow(
+              //           color: Color.fromRGBO(0, 0, 0, 0.15),
+              //           blurRadius: 13.7143,
+              //         ),
+              //       ],
+              //       borderRadius: BorderRadius.circular(4.04161),
+              //     ),
+              //     child: Row(
+              //       mainAxisAlignment: MainAxisAlignment.center,
+              //       children: const [
+              //         Expanded(
+              //           child: TextField(
+              //             decoration: InputDecoration(
+              //               hintText: 'Localisation du spot',
+              //               border: InputBorder.none,
+              //               contentPadding:
+              //                   EdgeInsets.symmetric(horizontal: 30),
+              //               hintStyle: TextStyle(
+              //                 fontWeight: FontWeight.bold,
+              //               ),
+              //             ),
+              //           ),
+              //         ),
+              //       ],
+              //     ),
+              //   ),
+              // ),
               Center(
-                child: Container(
-                  width: 314,
-                  height: 55,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Color.fromRGBO(0, 0, 0, 0.15),
-                        blurRadius: 13.7143,
-                      ),
-                    ],
-                    borderRadius: BorderRadius.circular(4.04161),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Expanded(
-                        child: TextField(
-                          decoration: InputDecoration(
-                            hintText: 'Nom du spot',
-                            border: InputBorder.none,
-                            contentPadding:
-                                EdgeInsets.symmetric(horizontal: 30),
-                            hintStyle: TextStyle(
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              const SizedBox(height: 30), // Marge supérieure
-              // Marge supérieure
-              Center(
-                child: Container(
-                  width: 314,
-                  height: 55,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Color.fromRGBO(0, 0, 0, 0.15),
-                        blurRadius: 13.7143,
-                      ),
-                    ],
-                    borderRadius: BorderRadius.circular(4.04161),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Expanded(
-                        child: TextField(
-                          decoration: InputDecoration(
-                            hintText: 'Localisation du spot',
-                            border: InputBorder.none,
-                            contentPadding:
-                                EdgeInsets.symmetric(horizontal: 30),
-                            hintStyle: TextStyle(
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+  child: Column(
+    children: [
+      CustomInputField(hintText: 'Nom du spot'),
+      const SizedBox(height: 30), // Marge supérieure
+      CustomInputField(hintText: 'Localisation du spot'),
+    ],
+  ),
+),
+
               const SizedBox(height: 30),
               Center(
                 child: Container(
@@ -276,26 +287,15 @@ class AddSpotState extends State<AddSpot> {
                 ),
               ),
               const SizedBox(height: 15),
-              Center(
-                child: Container(
-                  width: 150,
-                  height: 50,
-                  decoration: BoxDecoration(
-                    color: CustomColors.red,
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  child: const Center(
-                    child: Text(
-                      'Proposer le spot',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              CustomButton(
+  buttonText: 'Proposer le spot',
+  buttonColor: CustomColors.red,
+  textColor: Colors.white,
+  onPressed: () {
+    // Logique à exécuter lors du clic sur le bouton
+  },
+),
+
             ],
           ),
         ),
